@@ -50,6 +50,8 @@ open class BrandedFoodObjectItems: JSONEncodable {
     public var minerals: [String]?
     /** An array of trace ingredients that may be found in this item */
     public var traces: [String]?
+    /** An array of vitamins that can be found in this item */
+    public var vitamins: [String]?
     /** Common names associated with this item. These generally clarify what the item is (e.g. when the brand name is \&quot;BRAND&#x27;s Spicy Enchilada\&quot; the common name may be \&quot;Chicken enchilada\&quot;) */
     public var commonName: String?
     /** A description of this item */
@@ -88,6 +90,7 @@ open class BrandedFoodObjectItems: JSONEncodable {
         nillableDictionary["has_english_ingredients"] = self.hasEnglishIngredients
         nillableDictionary["minerals"] = self.minerals?.encodeToJSON()
         nillableDictionary["traces"] = self.traces?.encodeToJSON()
+        nillableDictionary["vitamins"] = self.vitamins?.encodeToJSON()
         nillableDictionary["common_name"] = self.commonName
         nillableDictionary["description"] = self.description
         nillableDictionary["keywords"] = self.keywords?.encodeToJSON()

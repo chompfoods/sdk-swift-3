@@ -662,6 +662,10 @@ class Decoders {
                 case let .success(value): _result.traces = value
                 case let .failure(error): break
                 }
+                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["vitamins"] as AnyObject?) {
+                case let .success(value): _result.vitamins = value
+                case let .failure(error): break
+                }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["common_name"] as AnyObject?) {
                 case let .success(value): _result.commonName = value
                 case let .failure(error): break
