@@ -1558,7 +1558,7 @@ open class DefaultAPI: APIBase {
     /**
      * enum for parameter limit
      */
-    public enum Limit_ingredientSearchPhpGet: Int32 { 
+    public enum Limit_foodIngredientSearchPhpGet: Int32 { 
         case _1 = 1
         case _2 = 2
         case _3 = 3
@@ -1572,8 +1572,8 @@ open class DefaultAPI: APIBase {
      - parameter limit: (query) Set maximum number of records you want the API to return.  ___Important Note:__ Setting this to \&quot;1\&quot; will return 1 record per search term._  __Example:__ 1 _(defaults to 1, max is 3)_  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func ingredientSearchPhpGet(find: Int32, list: Bool, raw: Bool? = nil, limit: Limit_ingredientSearchPhpGet? = nil, completion: @escaping ((_ data: IngredientObject?, _ error: ErrorResponse?) -> Void)) {
-        ingredientSearchPhpGetWithRequestBuilder(find: find, list: list, raw: raw, limit: limit).execute { (response, error) -> Void in
+    open class func foodIngredientSearchPhpGet(find: Int32, list: Bool, raw: Bool? = nil, limit: Limit_foodIngredientSearchPhpGet? = nil, completion: @escaping ((_ data: IngredientObject?, _ error: ErrorResponse?) -> Void)) {
+        foodIngredientSearchPhpGetWithRequestBuilder(find: find, list: list, raw: raw, limit: limit).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1581,7 +1581,7 @@ open class DefaultAPI: APIBase {
 
     /**
      Get raw/generic food ingredient item(s)
-     - GET /ingredient/search.php
+     - GET /food/ingredient/search.php
      - # Get data for a specific ingredient or a specific set of ingredients.  __Example:__ ```https://chompthis.com/api/v2/ingredient/search.php?api_key=API_KEY&find=STRING/LIST&list=BOOLEAN&raw=BOOLEAN``` 
      - API Key:
        - type: apiKey api_key (QUERY)
@@ -1775,8 +1775,8 @@ open class DefaultAPI: APIBase {
      - parameter limit: (query) Set maximum number of records you want the API to return.  ___Important Note:__ Setting this to \&quot;1\&quot; will return 1 record per search term._  __Example:__ 1 _(defaults to 1, max is 3)_  (optional)
      - returns: RequestBuilder<IngredientObject> 
      */
-    open class func ingredientSearchPhpGetWithRequestBuilder(find: Int32, list: Bool, raw: Bool? = nil, limit: Limit_ingredientSearchPhpGet? = nil) -> RequestBuilder<IngredientObject> {
-        let path = "/ingredient/search.php"
+    open class func foodIngredientSearchPhpGetWithRequestBuilder(find: Int32, list: Bool, raw: Bool? = nil, limit: Limit_foodIngredientSearchPhpGet? = nil) -> RequestBuilder<IngredientObject> {
+        let path = "/food/ingredient/search.php"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         var url = URLComponents(string: URLString)
