@@ -23,13 +23,13 @@ open class BrandedFoodObjectNutrientsUsda: JSONEncodable {
     public var max: BigDecimal?
     /** Median nutrient value */
     public var median: BigDecimal?
+    /** Nutrient rank */
+    public var rank: Int32?
     /** Number of observations on which the value is based */
     public var dataPoints: Int32?
     /** Comments on any unusual aspect of the food nutrient. Examples might include why a nutrient value is different than typically expected. */
     public var footnote: String?
     /** Description of the nutrient source */
-    public var source: String?
-    /** Description of how the food nutrient value was obtained */
     public var description: String?
 
     public init() {}
@@ -44,9 +44,9 @@ open class BrandedFoodObjectNutrientsUsda: JSONEncodable {
         nillableDictionary["min"] = self.min?.encodeToJSON()
         nillableDictionary["max"] = self.max?.encodeToJSON()
         nillableDictionary["median"] = self.median?.encodeToJSON()
+        nillableDictionary["rank"] = self.rank?.encodeToJSON()
         nillableDictionary["data_points"] = self.dataPoints?.encodeToJSON()
         nillableDictionary["footnote"] = self.footnote
-        nillableDictionary["source"] = self.source
         nillableDictionary["description"] = self.description
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]

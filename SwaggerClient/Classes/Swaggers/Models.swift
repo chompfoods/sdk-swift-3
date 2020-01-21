@@ -780,16 +780,16 @@ class Decoders {
                 case let .success(value): _result.median = value
                 case let .failure(error): break
                 }
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["rank"] as AnyObject?) {
+                case let .success(value): _result.rank = value
+                case let .failure(error): break
+                }
                 switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["data_points"] as AnyObject?) {
                 case let .success(value): _result.dataPoints = value
                 case let .failure(error): break
                 }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["footnote"] as AnyObject?) {
                 case let .success(value): _result.footnote = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["source"] as AnyObject?) {
-                case let .success(value): _result.source = value
                 case let .failure(error): break
                 }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["description"] as AnyObject?) {
