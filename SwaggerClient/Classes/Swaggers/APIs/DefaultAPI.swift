@@ -12,7 +12,7 @@ import Alamofire
 open class DefaultAPI: APIBase {
     /**
      Get a branded food item using a barcode
-     - parameter code: (query) UPC/EAN barcode  __Example:__ 0842234000988  __Resources:__ [Database search](https://chompthis.com/api/lookup.php)  _Read [this article](https://desk.zoho.com/portal/chompthis/kb/articles/im-having-trouble-getting-matches-for-barcodes-what-can-id-do) for tips and tricks._  
+     - parameter code: (query) UPC/EAN barcode  __Example:__ &amp;code&#x3D;0842234000988  __Tips:__    - Use our [food lookup tool](https://chompthis.com/api/lookup.php).   - Read [this article](https://desk.zoho.com/portal/chompthis/kb/articles/im-having-trouble-getting-matches-for-barcodes-what-can-id-do) for general tips and tricks.  
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func foodBrandedBarcodePhpGet(code: String, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
@@ -360,7 +360,7 @@ open class DefaultAPI: APIBase {
     "brand_list" : [ "brand_list", "brand_list" ]
   } ]
 }}]
-     - parameter code: (query) UPC/EAN barcode  __Example:__ 0842234000988  __Resources:__ [Database search](https://chompthis.com/api/lookup.php)  _Read [this article](https://desk.zoho.com/portal/chompthis/kb/articles/im-having-trouble-getting-matches-for-barcodes-what-can-id-do) for tips and tricks._  
+     - parameter code: (query) UPC/EAN barcode  __Example:__ &amp;code&#x3D;0842234000988  __Tips:__    - Use our [food lookup tool](https://chompthis.com/api/lookup.php).   - Read [this article](https://desk.zoho.com/portal/chompthis/kb/articles/im-having-trouble-getting-matches-for-barcodes-what-can-id-do) for general tips and tricks.  
      - returns: RequestBuilder<BrandedFoodObject> 
      */
     open class func foodBrandedBarcodePhpGetWithRequestBuilder(code: String) -> RequestBuilder<BrandedFoodObject> {
@@ -378,12 +378,20 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     * enum for parameter source
+     */
+    public enum Source_foodBrandedIdPhpGet: String { 
+        case chomp = "Chomp"
+        case usda = "USDA"
+    }
+
+    /**
      Get a branded food item using an ID number
-     - parameter id: (query) Chomp branded food ID.  _Set \&quot;source&#x3D;USDA\&quot; if you wish to pass in the food&#x27;s FoodData Central ID (fdc_id)._  __Example #1:__ 15  __Resources:__ [Find branded food IDs](https://chompthis.com/api/lookup.php)  
-     - parameter source: (query) Specify the data source (optional).  You must pass in \&quot;USDA\&quot; if you want to look up a food item using a USDA FDC ID.  __Example:__ USDA _(defaults to \&quot;Chomp\&quot;)_  (optional)
+     - parameter id: (query) The ID number of a branded food item.  __Example #1:__ &amp;id&#x3D;15  __Example #2:__ &amp;id&#x3D;FDC_ID&amp;source&#x3D;USDA  ___Tip:__ Get started by using our  [ood lookup tool](https://chompthis.com/api/lookup.php)._  
+     - parameter source: (query) Configure the endpoint to accept food IDs from various data sources. This endpoint defaults to Chomp but can accept FDC IDs.  __Example:__ &amp;source&#x3D;Chomp  ___Important Note:__ Pass in &amp;source&#x3D;USDA if you want to look up food items using a USDA FDC ID._  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func foodBrandedIdPhpGet(id: Int32, source: String? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
+    open class func foodBrandedIdPhpGet(id: Int32, source: Source_foodBrandedIdPhpGet? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
         foodBrandedIdPhpGetWithRequestBuilder(id: id, source: source).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -728,18 +736,18 @@ open class DefaultAPI: APIBase {
     "brand_list" : [ "brand_list", "brand_list" ]
   } ]
 }}]
-     - parameter id: (query) Chomp branded food ID.  _Set \&quot;source&#x3D;USDA\&quot; if you wish to pass in the food&#x27;s FoodData Central ID (fdc_id)._  __Example #1:__ 15  __Resources:__ [Find branded food IDs](https://chompthis.com/api/lookup.php)  
-     - parameter source: (query) Specify the data source (optional).  You must pass in \&quot;USDA\&quot; if you want to look up a food item using a USDA FDC ID.  __Example:__ USDA _(defaults to \&quot;Chomp\&quot;)_  (optional)
+     - parameter id: (query) The ID number of a branded food item.  __Example #1:__ &amp;id&#x3D;15  __Example #2:__ &amp;id&#x3D;FDC_ID&amp;source&#x3D;USDA  ___Tip:__ Get started by using our  [ood lookup tool](https://chompthis.com/api/lookup.php)._  
+     - parameter source: (query) Configure the endpoint to accept food IDs from various data sources. This endpoint defaults to Chomp but can accept FDC IDs.  __Example:__ &amp;source&#x3D;Chomp  ___Important Note:__ Pass in &amp;source&#x3D;USDA if you want to look up food items using a USDA FDC ID._  (optional)
      - returns: RequestBuilder<BrandedFoodObject> 
      */
-    open class func foodBrandedIdPhpGetWithRequestBuilder(id: Int32, source: String? = nil) -> RequestBuilder<BrandedFoodObject> {
+    open class func foodBrandedIdPhpGetWithRequestBuilder(id: Int32, source: Source_foodBrandedIdPhpGet? = nil) -> RequestBuilder<BrandedFoodObject> {
         let path = "/food/branded/id.php"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
                         "id": id.encodeToJSON(),
-                        "source": source
+                        "source": source?.rawValue
         ])
 
         let requestBuilder: RequestBuilder<BrandedFoodObject>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
@@ -765,12 +773,13 @@ open class DefaultAPI: APIBase {
 
     /**
      Get a branded food item by name
-     - parameter name: (query) Branded food name  __Example:__ Starburst  __Resources:__ [Find branded food names](https://chompthis.com/api/lookup.php)  
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Note:__ The maximum value is 10._  __Example:__ 3 _(defaults to 10)_  (optional)
+     - parameter name: (query) Search for branded food items using a general food name keyword. This does not have to exactly match the \&quot;official\&quot; name for the food.  __Example:__ &amp;name&#x3D;Starburst  ___Tip:__ Get started by using our [food lookup tool](https://chompthis.com/api/lookup.php)._  
+     - parameter limit: (query) Set maximum number of records you want the API to return.  __Example:__ &amp;limit&#x3D;10  (optional)
+     - parameter page: (query) This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on.  __Example__: &amp;page&#x3D;1  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func foodBrandedNamePhpGet(name: String, limit: Limit_foodBrandedNamePhpGet? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
-        foodBrandedNamePhpGetWithRequestBuilder(name: name, limit: limit).execute { (response, error) -> Void in
+    open class func foodBrandedNamePhpGet(name: String, limit: Limit_foodBrandedNamePhpGet? = nil, page: Int32? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
+        foodBrandedNamePhpGetWithRequestBuilder(name: name, limit: limit, page: page).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -779,7 +788,7 @@ open class DefaultAPI: APIBase {
     /**
      Get a branded food item by name
      - GET /food/branded/name.php
-     - # Search for branded food items by name.  __Example:__ ```https://chompthis.com/api/v2/food/branded/name.php?api_key=API_KEY&name=NAME``` 
+     - # Search for branded food items by name.  This API endpoint is only available to Standard and Premium API subscribers. Please consider upgrading your subscription if you are subscribed to the Limited plan. _[Read this](https://desk.zoho.com/portal/chompthis/kb/articles/can-i-upgrade-downgrade-my-subscription) if you aren't sure how to upgrade your subscription._  __Example:__ ```https://chompthis.com/api/v2/food/branded/name.php?api_key=API_KEY&name=NAME``` 
      - API Key:
        - type: apiKey api_key (QUERY)
        - name: ApiKeyAuth
@@ -1114,23 +1123,34 @@ open class DefaultAPI: APIBase {
     "brand_list" : [ "brand_list", "brand_list" ]
   } ]
 }}]
-     - parameter name: (query) Branded food name  __Example:__ Starburst  __Resources:__ [Find branded food names](https://chompthis.com/api/lookup.php)  
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Note:__ The maximum value is 10._  __Example:__ 3 _(defaults to 10)_  (optional)
+     - parameter name: (query) Search for branded food items using a general food name keyword. This does not have to exactly match the \&quot;official\&quot; name for the food.  __Example:__ &amp;name&#x3D;Starburst  ___Tip:__ Get started by using our [food lookup tool](https://chompthis.com/api/lookup.php)._  
+     - parameter limit: (query) Set maximum number of records you want the API to return.  __Example:__ &amp;limit&#x3D;10  (optional)
+     - parameter page: (query) This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on.  __Example__: &amp;page&#x3D;1  (optional)
      - returns: RequestBuilder<BrandedFoodObject> 
      */
-    open class func foodBrandedNamePhpGetWithRequestBuilder(name: String, limit: Limit_foodBrandedNamePhpGet? = nil) -> RequestBuilder<BrandedFoodObject> {
+    open class func foodBrandedNamePhpGetWithRequestBuilder(name: String, limit: Limit_foodBrandedNamePhpGet? = nil, page: Int32? = nil) -> RequestBuilder<BrandedFoodObject> {
         let path = "/food/branded/name.php"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
                         "name": name,
-                        "limit": limit?.rawValue
+                        "limit": limit?.rawValue,
+                        "page": page?.encodeToJSON()
         ])
 
         let requestBuilder: RequestBuilder<BrandedFoodObject>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter diet
+     */
+    public enum Diet_foodBrandedSearchPhpGet: String { 
+        case vegan = "Vegan"
+        case vegetarian = "Vegetarian"
+        case glutenFree = "Gluten Free"
     }
 
     /**
@@ -1151,23 +1171,23 @@ open class DefaultAPI: APIBase {
 
     /**
      Get data for branded food items using various search parameters
-     - parameter allergen: (query) Specify a required allergen ingredient (optional)  __Example__: Peanuts  __Resources__: [List of allergens](https://chompthis.com/api/data/allergen.php)  (optional)
-     - parameter brand: (query) Specify a required brand (optional)  __Example__: Starbucks  __Resources__: [List of brands](https://chompthis.com/api/data/brand.php)  (optional)
-     - parameter category: (query) Specify a required category (optional)  __Example__: Pasta Dishes  __Resources__: [List of categories](https://chompthis.com/api/data/category.php)  (optional)
-     - parameter country: (query) Specify a required country (optional)  __Example__: United States  __Resources__: [List of countries](https://chompthis.com/api/data/country.php)  (optional)
-     - parameter diet: (query) Specify a required diet (optional)  _Filters the search to only include food items that are considered compatible with the following diets: Vegan, Vegetarian, Gluten Free_  __Example__: Gluten Free  __Resources__: [List of diets](https://chompthis.com/api/data/lifestyle.php)  (optional)
-     - parameter ingredient: (query) Specify a required ingredient (optional)  __Example__: Salt  __Resources__: [List of ingredients](https://chompthis.com/api/data/ingredient.php)  (optional)
-     - parameter keyword: (query) Specify a required keyword (optional)  __Example__: Starbucks  __Resources__: [List of brands](https://chompthis.com/api/data/brand.php)  (optional)
-     - parameter mineral: (query) Specify a required mineral (optional)  __Example__: Potassium  __Resources__: [List of minerals](https://chompthis.com/api/data/mineral.php)  (optional)
-     - parameter nutrient: (query) Specify a required nutrition label item (optional)  __Example__: Caffeine  __Resources__: [List of nutrition label items](https://chompthis.com/api/data/nutrition.php)  (optional)
-     - parameter palmOil: (query) Specify a required palm oil ingredient (optional)  __Example__: E160a Beta Carotene  __Resources__: [List of palm oil ingredients](https://chompthis.com/api/data/palm-oil.php)  (optional)
-     - parameter trace: (query) Specify a required trace ingredient (optional)  __Example__: Tree Nuts  __Resources__: [List of trace ingredients](https://chompthis.com/api/data/trace.php)  (optional)
-     - parameter vitamin: (query) Specify a required vitamin (optional)  __Example__: Biotin  __Resources__: [List of vitamins](https://chompthis.com/api/data/vitamin.php)  (optional)
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Note:__ The maximum value is 10._  __Example:__ 3 _(defaults to 10)_  (optional)
-     - parameter page: (query) Specify the search response page number.  _Each page will contain up to 10 items._  __Example__: 1 _(default)_  (optional)
+     - parameter allergen: (query) Filter the search to only include branded foods that contain a specific allergen.  __Example__: &amp;allergen&#x3D;Peanuts  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter brand: (query) Filter the search to only include branded foods that are owned by a specific brand.  __Example__: &amp;brand&#x3D;Starbucks  (optional)
+     - parameter category: (query) Filter the search to only include branded foods from a specific category.  __Example__: &amp;category&#x3D;Plant Based Foods  (optional)
+     - parameter country: (query) Filter the search to only include branded foods that are sold in a specific country.  __Example__: &amp;country&#x3D;United States  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter diet: (query) Filter the search to only include branded foods that are considered compatible with a specific diet.  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter ingredient: (query) Filter the search to only include branded foods that contain a specific ingredient.  __Example__: &amp;ingredient&#x3D;Salt  (optional)
+     - parameter keyword: (query) Filter the search to only include branded foods that are associated with a specific keyword.  __Example__: &amp;keyword&#x3D;Organic  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter mineral: (query) Filter the search to only include branded foods that contain a specific mineral.  __Example__: &amp;mineral&#x3D;Potassium  (optional)
+     - parameter nutrient: (query) Filter the search to only include branded foods that contain a specific nutrient.  __Example__: &amp;nutrient&#x3D;Caffeine  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter palmOil: (query) Filter the search to only include branded foods that contain a specific ingredient made using palm oil.  __Example__: &amp;palm_oil&#x3D;E160a Beta Carotene  (optional)
+     - parameter trace: (query) Filter the search to only include branded foods that contain a specific trace ingredient.  __Example__: &amp;trace&#x3D;Tree Nuts  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter vitamin: (query) Filter the search to only include branded foods that contain a specific vitamin.  __Example__: &amp;vitamin&#x3D;Biotin  (optional)
+     - parameter limit: (query) Set maximum number of records you want the API to return.  __Example:__ &amp;limit&#x3D;10  (optional)
+     - parameter page: (query) This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on.  __Example__: &amp;page&#x3D;1  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func foodBrandedSearchPhpGet(allergen: String? = nil, brand: String? = nil, category: String? = nil, country: String? = nil, diet: String? = nil, ingredient: String? = nil, keyword: String? = nil, mineral: String? = nil, nutrient: String? = nil, palmOil: String? = nil, trace: String? = nil, vitamin: String? = nil, limit: Limit_foodBrandedSearchPhpGet? = nil, page: Int32? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
+    open class func foodBrandedSearchPhpGet(allergen: String? = nil, brand: String? = nil, category: String? = nil, country: String? = nil, diet: Diet_foodBrandedSearchPhpGet? = nil, ingredient: String? = nil, keyword: String? = nil, mineral: String? = nil, nutrient: String? = nil, palmOil: String? = nil, trace: String? = nil, vitamin: String? = nil, limit: Limit_foodBrandedSearchPhpGet? = nil, page: Int32? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
         foodBrandedSearchPhpGetWithRequestBuilder(allergen: allergen, brand: brand, category: category, country: country, diet: diet, ingredient: ingredient, keyword: keyword, mineral: mineral, nutrient: nutrient, palmOil: palmOil, trace: trace, vitamin: vitamin, limit: limit, page: page).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1177,7 +1197,7 @@ open class DefaultAPI: APIBase {
     /**
      Get data for branded food items using various search parameters
      - GET /food/branded/search.php
-     - # Search for branded food items using various parameters.  __Example:__ ```https://chompthis.com/api/v2/food/branded/search.php?api_key=API_KEY&brand=BRAND&country=COUNTRY&page=1```  ___Tip:__ Get started by using the [Query Builder](https://chompthis.com/api/build.php)._ 
+     - # Search for branded food items using various parameters.  This API endpoint is only available to Standard and Premium API subscribers. Please consider upgrading your subscription if you are subscribed to the Limited plan. _[Read this](https://desk.zoho.com/portal/chompthis/kb/articles/can-i-upgrade-downgrade-my-subscription) if you aren't sure how to upgrade your subscription._  __Example:__ ```https://chompthis.com/api/v2/food/branded/search.php?api_key=API_KEY&brand=BRAND&country=COUNTRY&page=1```  ___Tip:__ Get started by using the [Query Builder](https://chompthis.com/api/build.php)._ 
      - API Key:
        - type: apiKey api_key (QUERY)
        - name: ApiKeyAuth
@@ -1512,23 +1532,23 @@ open class DefaultAPI: APIBase {
     "brand_list" : [ "brand_list", "brand_list" ]
   } ]
 }}]
-     - parameter allergen: (query) Specify a required allergen ingredient (optional)  __Example__: Peanuts  __Resources__: [List of allergens](https://chompthis.com/api/data/allergen.php)  (optional)
-     - parameter brand: (query) Specify a required brand (optional)  __Example__: Starbucks  __Resources__: [List of brands](https://chompthis.com/api/data/brand.php)  (optional)
-     - parameter category: (query) Specify a required category (optional)  __Example__: Pasta Dishes  __Resources__: [List of categories](https://chompthis.com/api/data/category.php)  (optional)
-     - parameter country: (query) Specify a required country (optional)  __Example__: United States  __Resources__: [List of countries](https://chompthis.com/api/data/country.php)  (optional)
-     - parameter diet: (query) Specify a required diet (optional)  _Filters the search to only include food items that are considered compatible with the following diets: Vegan, Vegetarian, Gluten Free_  __Example__: Gluten Free  __Resources__: [List of diets](https://chompthis.com/api/data/lifestyle.php)  (optional)
-     - parameter ingredient: (query) Specify a required ingredient (optional)  __Example__: Salt  __Resources__: [List of ingredients](https://chompthis.com/api/data/ingredient.php)  (optional)
-     - parameter keyword: (query) Specify a required keyword (optional)  __Example__: Starbucks  __Resources__: [List of brands](https://chompthis.com/api/data/brand.php)  (optional)
-     - parameter mineral: (query) Specify a required mineral (optional)  __Example__: Potassium  __Resources__: [List of minerals](https://chompthis.com/api/data/mineral.php)  (optional)
-     - parameter nutrient: (query) Specify a required nutrition label item (optional)  __Example__: Caffeine  __Resources__: [List of nutrition label items](https://chompthis.com/api/data/nutrition.php)  (optional)
-     - parameter palmOil: (query) Specify a required palm oil ingredient (optional)  __Example__: E160a Beta Carotene  __Resources__: [List of palm oil ingredients](https://chompthis.com/api/data/palm-oil.php)  (optional)
-     - parameter trace: (query) Specify a required trace ingredient (optional)  __Example__: Tree Nuts  __Resources__: [List of trace ingredients](https://chompthis.com/api/data/trace.php)  (optional)
-     - parameter vitamin: (query) Specify a required vitamin (optional)  __Example__: Biotin  __Resources__: [List of vitamins](https://chompthis.com/api/data/vitamin.php)  (optional)
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Note:__ The maximum value is 10._  __Example:__ 3 _(defaults to 10)_  (optional)
-     - parameter page: (query) Specify the search response page number.  _Each page will contain up to 10 items._  __Example__: 1 _(default)_  (optional)
+     - parameter allergen: (query) Filter the search to only include branded foods that contain a specific allergen.  __Example__: &amp;allergen&#x3D;Peanuts  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter brand: (query) Filter the search to only include branded foods that are owned by a specific brand.  __Example__: &amp;brand&#x3D;Starbucks  (optional)
+     - parameter category: (query) Filter the search to only include branded foods from a specific category.  __Example__: &amp;category&#x3D;Plant Based Foods  (optional)
+     - parameter country: (query) Filter the search to only include branded foods that are sold in a specific country.  __Example__: &amp;country&#x3D;United States  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter diet: (query) Filter the search to only include branded foods that are considered compatible with a specific diet.  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter ingredient: (query) Filter the search to only include branded foods that contain a specific ingredient.  __Example__: &amp;ingredient&#x3D;Salt  (optional)
+     - parameter keyword: (query) Filter the search to only include branded foods that are associated with a specific keyword.  __Example__: &amp;keyword&#x3D;Organic  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter mineral: (query) Filter the search to only include branded foods that contain a specific mineral.  __Example__: &amp;mineral&#x3D;Potassium  (optional)
+     - parameter nutrient: (query) Filter the search to only include branded foods that contain a specific nutrient.  __Example__: &amp;nutrient&#x3D;Caffeine  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter palmOil: (query) Filter the search to only include branded foods that contain a specific ingredient made using palm oil.  __Example__: &amp;palm_oil&#x3D;E160a Beta Carotene  (optional)
+     - parameter trace: (query) Filter the search to only include branded foods that contain a specific trace ingredient.  __Example__: &amp;trace&#x3D;Tree Nuts  ___Important Note:__ This parameter cannot be used alone. It must be paired with at least 1 additional parameter._  (optional)
+     - parameter vitamin: (query) Filter the search to only include branded foods that contain a specific vitamin.  __Example__: &amp;vitamin&#x3D;Biotin  (optional)
+     - parameter limit: (query) Set maximum number of records you want the API to return.  __Example:__ &amp;limit&#x3D;10  (optional)
+     - parameter page: (query) This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on.  __Example__: &amp;page&#x3D;1  (optional)
      - returns: RequestBuilder<BrandedFoodObject> 
      */
-    open class func foodBrandedSearchPhpGetWithRequestBuilder(allergen: String? = nil, brand: String? = nil, category: String? = nil, country: String? = nil, diet: String? = nil, ingredient: String? = nil, keyword: String? = nil, mineral: String? = nil, nutrient: String? = nil, palmOil: String? = nil, trace: String? = nil, vitamin: String? = nil, limit: Limit_foodBrandedSearchPhpGet? = nil, page: Int32? = nil) -> RequestBuilder<BrandedFoodObject> {
+    open class func foodBrandedSearchPhpGetWithRequestBuilder(allergen: String? = nil, brand: String? = nil, category: String? = nil, country: String? = nil, diet: Diet_foodBrandedSearchPhpGet? = nil, ingredient: String? = nil, keyword: String? = nil, mineral: String? = nil, nutrient: String? = nil, palmOil: String? = nil, trace: String? = nil, vitamin: String? = nil, limit: Limit_foodBrandedSearchPhpGet? = nil, page: Int32? = nil) -> RequestBuilder<BrandedFoodObject> {
         let path = "/food/branded/search.php"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -1538,7 +1558,7 @@ open class DefaultAPI: APIBase {
                         "brand": brand,
                         "category": category,
                         "country": country,
-                        "diet": diet,
+                        "diet": diet?.rawValue,
                         "ingredient": ingredient,
                         "keyword": keyword,
                         "mineral": mineral,
@@ -1566,10 +1586,10 @@ open class DefaultAPI: APIBase {
 
     /**
      Get raw/generic food ingredient item(s)
-     - parameter find: (query) Specify the ingredient name(s).  __Example #1:__ broccoli  __Example #2:__ broccoli,cauliflower,spinach  ___Important Note:__ Set the \&quot;is_list\&quot; parameter to true before passing in a comma-separated list of ingredients._  
-     - parameter list: (query) Specify if you are searching for multiple ingredients.  _Setting this to true will configure this endpoint so that it accepts a comma-separated list of ingredients._  _By default, this endpoint expects a single ingredient._  __Example:__ true _(defaults to false)_  
-     - parameter raw: (query) Specify if you only want data for raw ingredients.  __Example:__ true _(defaults to true)_  (optional)
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Important Note:__ Setting this to \&quot;1\&quot; will return 1 record per search term._  __Example:__ 1 _(defaults to 1, max is 3)_  (optional)
+     - parameter find: (query) Search our database for a single ingredient or a specific set of ingredients.  __Example #1:__ &amp;find&#x3D;broccoli  __Example #2:__ &amp;find&#x3D;broccoli,cauliflower,spinach&amp;list&#x3D;true  __Important List Notes:__    - Set the \&quot;list\&quot; parameter to \&quot;true\&quot; before passing in a comma-separated list of ingredients.   - Comma-separated lists cannot contain more than __15 ingredients__. You must perform additional API calls if you are looking up more than 15 ingredients.  
+     - parameter list: (query) Setting _&amp;list&#x3D;true_ will configure this endpoint to allow searching for ingredients using a comma-separated list. By default, this endpoint will __only__ return results for the first ingredient.  __Example:__ &amp;list&#x3D;true  
+     - parameter raw: (query) Optionally filter the search result to only include raw ingredients.  __Example:__ &amp;raw&#x3D;true  (optional)
+     - parameter limit: (query) Set maximum number of records you want the API to return, per search term.  __Example:__ &amp;limit&#x3D;3  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func foodIngredientSearchPhpGet(find: Int32, list: Bool, raw: Bool? = nil, limit: Limit_foodIngredientSearchPhpGet? = nil, completion: @escaping ((_ data: IngredientObject?, _ error: ErrorResponse?) -> Void)) {
@@ -1582,7 +1602,7 @@ open class DefaultAPI: APIBase {
     /**
      Get raw/generic food ingredient item(s)
      - GET /food/ingredient/search.php
-     - # Get data for a specific ingredient or a specific set of ingredients.  __Example:__ ```https://chompthis.com/api/v2/ingredient/search.php?api_key=API_KEY&find=STRING/LIST&list=BOOLEAN&raw=BOOLEAN``` 
+     - # Get data for a specific ingredient or a specific set of ingredients.  This API endpoint is only available to Standard and Premium API subscribers. Please consider upgrading your subscription if you are subscribed to the Limited plan. _[Read this](https://desk.zoho.com/portal/chompthis/kb/articles/can-i-upgrade-downgrade-my-subscription) if you aren't sure how to upgrade your subscription._  __Example:__ ```https://chompthis.com/api/v2/ingredient/search.php?api_key=API_KEY&find=STRING/LIST&list=BOOLEAN&raw=BOOLEAN``` 
      - API Key:
        - type: apiKey api_key (QUERY)
        - name: ApiKeyAuth
@@ -1769,10 +1789,10 @@ open class DefaultAPI: APIBase {
     } ]
   } ]
 }}]
-     - parameter find: (query) Specify the ingredient name(s).  __Example #1:__ broccoli  __Example #2:__ broccoli,cauliflower,spinach  ___Important Note:__ Set the \&quot;is_list\&quot; parameter to true before passing in a comma-separated list of ingredients._  
-     - parameter list: (query) Specify if you are searching for multiple ingredients.  _Setting this to true will configure this endpoint so that it accepts a comma-separated list of ingredients._  _By default, this endpoint expects a single ingredient._  __Example:__ true _(defaults to false)_  
-     - parameter raw: (query) Specify if you only want data for raw ingredients.  __Example:__ true _(defaults to true)_  (optional)
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Important Note:__ Setting this to \&quot;1\&quot; will return 1 record per search term._  __Example:__ 1 _(defaults to 1, max is 3)_  (optional)
+     - parameter find: (query) Search our database for a single ingredient or a specific set of ingredients.  __Example #1:__ &amp;find&#x3D;broccoli  __Example #2:__ &amp;find&#x3D;broccoli,cauliflower,spinach&amp;list&#x3D;true  __Important List Notes:__    - Set the \&quot;list\&quot; parameter to \&quot;true\&quot; before passing in a comma-separated list of ingredients.   - Comma-separated lists cannot contain more than __15 ingredients__. You must perform additional API calls if you are looking up more than 15 ingredients.  
+     - parameter list: (query) Setting _&amp;list&#x3D;true_ will configure this endpoint to allow searching for ingredients using a comma-separated list. By default, this endpoint will __only__ return results for the first ingredient.  __Example:__ &amp;list&#x3D;true  
+     - parameter raw: (query) Optionally filter the search result to only include raw ingredients.  __Example:__ &amp;raw&#x3D;true  (optional)
+     - parameter limit: (query) Set maximum number of records you want the API to return, per search term.  __Example:__ &amp;limit&#x3D;3  (optional)
      - returns: RequestBuilder<IngredientObject> 
      */
     open class func foodIngredientSearchPhpGetWithRequestBuilder(find: Int32, list: Bool, raw: Bool? = nil, limit: Limit_foodIngredientSearchPhpGet? = nil) -> RequestBuilder<IngredientObject> {
