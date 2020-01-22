@@ -13,7 +13,7 @@ open class BrandedFoodObjectPackage: JSONEncodable {
     /** Package quantity */
     public var quantity: Int32?
     /** Package size */
-    public var size: Int32?
+    public var size: String?
 
     public init() {}
 
@@ -21,7 +21,7 @@ open class BrandedFoodObjectPackage: JSONEncodable {
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["quantity"] = self.quantity?.encodeToJSON()
-        nillableDictionary["size"] = self.size?.encodeToJSON()
+        nillableDictionary["size"] = self.size
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

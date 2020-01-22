@@ -16,8 +16,7 @@ open class BrandedFoodObjectItems: JSONEncodable {
     public var name: String?
     /** The brand name that owns this item */
     public var brand: String?
-    /** Ingredients in order of highest value to least */
-    public var ingredients: String?
+    public var ingredients: BrandedFoodObjectIngredients?
     public var package: BrandedFoodObjectPackage?
     public var serving: BrandedFoodObjectServing?
     public var categories: [String]?
@@ -69,7 +68,7 @@ open class BrandedFoodObjectItems: JSONEncodable {
         nillableDictionary["barcode"] = self.barcode
         nillableDictionary["name"] = self.name
         nillableDictionary["brand"] = self.brand
-        nillableDictionary["ingredients"] = self.ingredients
+        nillableDictionary["ingredients"] = self.ingredients?.encodeToJSON()
         nillableDictionary["package"] = self.package?.encodeToJSON()
         nillableDictionary["serving"] = self.serving?.encodeToJSON()
         nillableDictionary["categories"] = self.categories?.encodeToJSON()
