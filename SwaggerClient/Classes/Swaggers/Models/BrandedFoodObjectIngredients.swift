@@ -10,7 +10,7 @@ import Foundation
 
 /** An object containing this item&#x27;s ingredients in order of highest value to least */
 open class BrandedFoodObjectIngredients: JSONEncodable {
-    /** This item&#x27;s ingredients as seen on ChompThis.com */
+    /** Ingredients for this item from Chomp&#x27;s internal database */
     public var chomp: String?
     /** This branded food item&#x27;s ingredients according to the USDA */
     public var usda: String?
