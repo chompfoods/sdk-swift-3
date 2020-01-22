@@ -23,7 +23,7 @@ open class IngredientObjectItems: JSONEncodable {
     /** An array of objects containing information on discrete amounts of a food found in this item */
     public var portions: [BrandedFoodObjectPortions]?
     /** Common names associated with this item. These generally clarify what the item is (e.g. when the brand name is \&quot;BRAND&#x27;s Spicy Enchilada\&quot; the common name may be \&quot;Chicken enchilada\&quot;) */
-    public var commonName: String?
+    public var commonNames: String?
     /** A description of this item */
     public var description: String?
     /** Comments on any unusual aspects of this item. Examples might include unusual aspects of the food overall. */
@@ -42,7 +42,7 @@ open class IngredientObjectItems: JSONEncodable {
         nillableDictionary["diet_labels"] = self.dietLabels?.encodeToJSON()
         nillableDictionary["components"] = self.components?.encodeToJSON()
         nillableDictionary["portions"] = self.portions?.encodeToJSON()
-        nillableDictionary["common_name"] = self.commonName
+        nillableDictionary["common_names"] = self.commonNames
         nillableDictionary["description"] = self.description
         nillableDictionary["footnote"] = self.footnote
 

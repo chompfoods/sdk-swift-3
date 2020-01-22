@@ -12,7 +12,7 @@ import Foundation
 open class BrandedFoodObjectIngredients: JSONEncodable {
     /** Ingredients for this item from Chomp&#x27;s internal database */
     public var chomp: String?
-    /** This branded food item&#x27;s ingredients according to the USDA */
+    /** This branded food item&#x27;s ingredients, according to the USDA */
     public var usda: String?
 
     public init() {}
