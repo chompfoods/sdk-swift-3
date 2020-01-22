@@ -10,10 +10,8 @@ import Foundation
 
 /** An object containing serving information for this item */
 open class BrandedFoodObjectServing: JSONEncodable {
-    /** Serving size */
-    public var size: Int32?
-    /** Serving measurement unit (e.g. if measure is 3 tsp, the unit is tsp) */
-    public var measurementUnit: String?
+    /** Serving size with measurement unit (e.g. if measure is 3 tsp, the unit is tsp) */
+    public var size: String?
     /** Serving size description */
     public var sizeFulltext: String?
     /** Total servings */
@@ -24,8 +22,7 @@ open class BrandedFoodObjectServing: JSONEncodable {
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["size"] = self.size?.encodeToJSON()
-        nillableDictionary["measurement_unit"] = self.measurementUnit
+        nillableDictionary["size"] = self.size
         nillableDictionary["size_fulltext"] = self.sizeFulltext
         nillableDictionary["total"] = self.total?.encodeToJSON()
 

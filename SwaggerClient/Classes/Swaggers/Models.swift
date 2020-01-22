@@ -996,12 +996,8 @@ class Decoders {
         Decoders.addDecoder(clazz: BrandedFoodObjectServing.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<BrandedFoodObjectServing> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
                 let _result = instance == nil ? BrandedFoodObjectServing() : instance as! BrandedFoodObjectServing
-                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["size"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["size"] as AnyObject?) {
                 case let .success(value): _result.size = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["measurement_unit"] as AnyObject?) {
-                case let .success(value): _result.measurementUnit = value
                 case let .failure(error): break
                 }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["size_fulltext"] as AnyObject?) {
