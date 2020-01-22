@@ -51,7 +51,7 @@ open class BrandedFoodObjectItems: JSONEncodable {
     public var traces: [String]?
     /** An array of vitamins that are found in this item */
     public var vitamins: [String]?
-    /** Common names associated with this item. These generally clarify what the item is (e.g. when the brand name is \&quot;BRAND&#x27;s Spicy Enchilada\&quot; the common name may be \&quot;Chicken enchilada\&quot;) */
+    /** Other names commonly associated with this item. These generally clarify what the item is (e.g. when the brand name is \&quot;BRAND&#x27;s Spicy Enchilada\&quot; the common name may be \&quot;Chicken enchilada\&quot;) */
     public var commonName: String?
     /** A description of this item */
     public var description: String?
