@@ -19,9 +19,9 @@ open class IngredientObjectItems: JSONEncodable {
     public var proteinConversionFactor: BigDecimal?
     public var dietLabels: BrandedFoodObjectDietLabels?
     /** An array of objects containing the constituent parts of a food (e.g. bone is a component of meat) */
-    public var components: [BrandedFoodObjectComponents]?
+    public var components: [IngredientObjectComponents]?
     /** An array of objects containing information on discrete amounts of a food found in this item */
-    public var portions: [BrandedFoodObjectPortions]?
+    public var portions: [IngredientObjectPortions]?
     /** Common names associated with this item. These generally clarify what the item is (e.g. when the brand name is \&quot;BRAND&#x27;s Spicy Enchilada\&quot; the common name may be \&quot;Chicken enchilada\&quot;) */
     public var commonNames: String?
     /** A description of this item */

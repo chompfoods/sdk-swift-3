@@ -32,23 +32,10 @@ open class DefaultAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "items" : [ {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
       "english_speaking" : 6,
-      "non_english_speaking" : 1
+      "non_english_speaking" : 8
     },
     "description" : "description",
     "has_english_ingredients" : true,
@@ -151,21 +138,6 @@ open class DefaultAPI: APIBase {
     "categories" : [ "categories", "categories" ],
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
     "package" : {
       "quantity" : 0,
       "size" : "size"
@@ -202,23 +174,10 @@ open class DefaultAPI: APIBase {
     "brand_list" : [ "brand_list", "brand_list" ]
   }, {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
       "english_speaking" : 6,
-      "non_english_speaking" : 1
+      "non_english_speaking" : 8
     },
     "description" : "description",
     "has_english_ingredients" : true,
@@ -321,21 +280,6 @@ open class DefaultAPI: APIBase {
     "categories" : [ "categories", "categories" ],
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
     "package" : {
       "quantity" : 0,
       "size" : "size"
@@ -420,23 +364,10 @@ open class DefaultAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "items" : [ {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
       "english_speaking" : 6,
-      "non_english_speaking" : 1
+      "non_english_speaking" : 8
     },
     "description" : "description",
     "has_english_ingredients" : true,
@@ -539,21 +470,6 @@ open class DefaultAPI: APIBase {
     "categories" : [ "categories", "categories" ],
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
     "package" : {
       "quantity" : 0,
       "size" : "size"
@@ -590,23 +506,10 @@ open class DefaultAPI: APIBase {
     "brand_list" : [ "brand_list", "brand_list" ]
   }, {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
       "english_speaking" : 6,
-      "non_english_speaking" : 1
+      "non_english_speaking" : 8
     },
     "description" : "description",
     "has_english_ingredients" : true,
@@ -709,21 +612,6 @@ open class DefaultAPI: APIBase {
     "categories" : [ "categories", "categories" ],
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
     "package" : {
       "quantity" : 0,
       "size" : "size"
@@ -819,23 +707,10 @@ open class DefaultAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "items" : [ {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
       "english_speaking" : 6,
-      "non_english_speaking" : 1
+      "non_english_speaking" : 8
     },
     "description" : "description",
     "has_english_ingredients" : true,
@@ -938,21 +813,6 @@ open class DefaultAPI: APIBase {
     "categories" : [ "categories", "categories" ],
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
     "package" : {
       "quantity" : 0,
       "size" : "size"
@@ -989,23 +849,10 @@ open class DefaultAPI: APIBase {
     "brand_list" : [ "brand_list", "brand_list" ]
   }, {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
       "english_speaking" : 6,
-      "non_english_speaking" : 1
+      "non_english_speaking" : 8
     },
     "description" : "description",
     "has_english_ingredients" : true,
@@ -1108,21 +955,6 @@ open class DefaultAPI: APIBase {
     "categories" : [ "categories", "categories" ],
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
     "package" : {
       "quantity" : 0,
       "size" : "size"
@@ -1240,23 +1072,10 @@ open class DefaultAPI: APIBase {
      - examples: [{contentType=application/json, example={
   "items" : [ {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
       "english_speaking" : 6,
-      "non_english_speaking" : 1
+      "non_english_speaking" : 8
     },
     "description" : "description",
     "has_english_ingredients" : true,
@@ -1359,21 +1178,6 @@ open class DefaultAPI: APIBase {
     "categories" : [ "categories", "categories" ],
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
     "package" : {
       "quantity" : 0,
       "size" : "size"
@@ -1410,23 +1214,10 @@ open class DefaultAPI: APIBase {
     "brand_list" : [ "brand_list", "brand_list" ]
   }, {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
       "english_speaking" : 6,
-      "non_english_speaking" : 1
+      "non_english_speaking" : 8
     },
     "description" : "description",
     "has_english_ingredients" : true,
@@ -1529,21 +1320,6 @@ open class DefaultAPI: APIBase {
     "categories" : [ "categories", "categories" ],
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 3,
-      "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
     "package" : {
       "quantity" : 0,
       "size" : "size"
@@ -1663,15 +1439,15 @@ open class DefaultAPI: APIBase {
       "fat_value" : 1.2315135367772556
     },
     "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
+      "data_points" : 5,
+      "pct_weight" : 6.027456183070403,
+      "gram_weight" : 1.4658129805029452,
       "name" : "name",
       "is_refuse" : true
     }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
+      "data_points" : 5,
+      "pct_weight" : 6.027456183070403,
+      "gram_weight" : 1.4658129805029452,
       "name" : "name",
       "is_refuse" : true
     } ],
@@ -1731,16 +1507,16 @@ open class DefaultAPI: APIBase {
       } ]
     },
     "portions" : [ {
-      "data_points" : 3,
+      "data_points" : 2,
       "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
+      "gram_weight" : 5.637376656633329,
       "measurement_unit" : "measurement_unit",
       "description" : "description",
       "footnote" : "footnote"
     }, {
-      "data_points" : 3,
+      "data_points" : 2,
       "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
+      "gram_weight" : 5.637376656633329,
       "measurement_unit" : "measurement_unit",
       "description" : "description",
       "footnote" : "footnote"
@@ -1753,15 +1529,15 @@ open class DefaultAPI: APIBase {
       "fat_value" : 1.2315135367772556
     },
     "components" : [ {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
+      "data_points" : 5,
+      "pct_weight" : 6.027456183070403,
+      "gram_weight" : 1.4658129805029452,
       "name" : "name",
       "is_refuse" : true
     }, {
-      "data_points" : 9,
-      "pct_weight" : 6.683562403749608,
-      "gram_weight" : 8.762042012749001,
+      "data_points" : 5,
+      "pct_weight" : 6.027456183070403,
+      "gram_weight" : 1.4658129805029452,
       "name" : "name",
       "is_refuse" : true
     } ],
@@ -1821,16 +1597,16 @@ open class DefaultAPI: APIBase {
       } ]
     },
     "portions" : [ {
-      "data_points" : 3,
+      "data_points" : 2,
       "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
+      "gram_weight" : 5.637376656633329,
       "measurement_unit" : "measurement_unit",
       "description" : "description",
       "footnote" : "footnote"
     }, {
-      "data_points" : 3,
+      "data_points" : 2,
       "modifier" : "modifier",
-      "gram_weight" : 6.438423552598547,
+      "gram_weight" : 5.637376656633329,
       "measurement_unit" : "measurement_unit",
       "description" : "description",
       "footnote" : "footnote"

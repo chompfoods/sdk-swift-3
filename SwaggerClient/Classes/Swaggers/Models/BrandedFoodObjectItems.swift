@@ -28,10 +28,6 @@ open class BrandedFoodObjectItems: JSONEncodable {
     /** An array of ingredient objects that were flagged while grading this item for compatibility with each diet */
     public var dietFlags: [BrandedFoodObjectDietFlags]?
     public var packagingPhotos: BrandedFoodObjectPackagingPhotos?
-    /** An array of objects containing the constituent parts of a food (e.g. bone is a component of meat) */
-    public var components: [BrandedFoodObjectComponents]?
-    /** An array of objects containing information on discrete amounts of a food found in this item */
-    public var portions: [BrandedFoodObjectPortions]?
     /** An array of ingredients in this item that may cause allergic reactions in people */
     public var allergens: [String]?
     /** An array of brands we have associated with this item. Some items are sold by more than 1 brand. */
@@ -76,8 +72,6 @@ open class BrandedFoodObjectItems: JSONEncodable {
         nillableDictionary["diet_labels"] = self.dietLabels?.encodeToJSON()
         nillableDictionary["diet_flags"] = self.dietFlags?.encodeToJSON()
         nillableDictionary["packaging_photos"] = self.packagingPhotos?.encodeToJSON()
-        nillableDictionary["components"] = self.components?.encodeToJSON()
-        nillableDictionary["portions"] = self.portions?.encodeToJSON()
         nillableDictionary["allergens"] = self.allergens?.encodeToJSON()
         nillableDictionary["brand_list"] = self.brandList?.encodeToJSON()
         nillableDictionary["countries"] = self.countries?.encodeToJSON()

@@ -331,40 +331,6 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "BrandedFoodObjectCalorieConversionFactor", actual: "\(source)"))
             }
         }
-        // Decoder for [BrandedFoodObjectComponents]
-        Decoders.addDecoder(clazz: [BrandedFoodObjectComponents].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[BrandedFoodObjectComponents]> in
-            return Decoders.decode(clazz: [BrandedFoodObjectComponents].self, source: source)
-        }
-
-        // Decoder for BrandedFoodObjectComponents
-        Decoders.addDecoder(clazz: BrandedFoodObjectComponents.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<BrandedFoodObjectComponents> in
-            if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? BrandedFoodObjectComponents() : instance as! BrandedFoodObjectComponents
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?) {
-                case let .success(value): _result.name = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: BigDecimal.self, source: sourceDictionary["pct_weight"] as AnyObject?) {
-                case let .success(value): _result.pctWeight = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: BigDecimal.self, source: sourceDictionary["gram_weight"] as AnyObject?) {
-                case let .success(value): _result.gramWeight = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["is_refuse"] as AnyObject?) {
-                case let .success(value): _result.isRefuse = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["data_points"] as AnyObject?) {
-                case let .success(value): _result.dataPoints = value
-                case let .failure(error): break
-                }
-                return .success(_result)
-            } else {
-                return .failure(.typeMismatch(expected: "BrandedFoodObjectComponents", actual: "\(source)"))
-            }
-        }
         // Decoder for [BrandedFoodObjectCountryDetails]
         Decoders.addDecoder(clazz: [BrandedFoodObjectCountryDetails].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[BrandedFoodObjectCountryDetails]> in
             return Decoders.decode(clazz: [BrandedFoodObjectCountryDetails].self, source: source)
@@ -638,14 +604,6 @@ class Decoders {
                 }
                 switch Decoders.decodeOptional(clazz: BrandedFoodObjectPackagingPhotos.self, source: sourceDictionary["packaging_photos"] as AnyObject?) {
                 case let .success(value): _result.packagingPhotos = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: [BrandedFoodObjectComponents].self, source: sourceDictionary["components"] as AnyObject?) {
-                case let .success(value): _result.components = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: [BrandedFoodObjectPortions].self, source: sourceDictionary["portions"] as AnyObject?) {
-                case let .success(value): _result.portions = value
                 case let .failure(error): break
                 }
                 switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["allergens"] as AnyObject?) {
@@ -945,44 +903,6 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "BrandedFoodObjectPackagingPhotosNutrition", actual: "\(source)"))
             }
         }
-        // Decoder for [BrandedFoodObjectPortions]
-        Decoders.addDecoder(clazz: [BrandedFoodObjectPortions].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[BrandedFoodObjectPortions]> in
-            return Decoders.decode(clazz: [BrandedFoodObjectPortions].self, source: source)
-        }
-
-        // Decoder for BrandedFoodObjectPortions
-        Decoders.addDecoder(clazz: BrandedFoodObjectPortions.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<BrandedFoodObjectPortions> in
-            if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? BrandedFoodObjectPortions() : instance as! BrandedFoodObjectPortions
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["measurement_unit"] as AnyObject?) {
-                case let .success(value): _result.measurementUnit = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["description"] as AnyObject?) {
-                case let .success(value): _result.description = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["modifier"] as AnyObject?) {
-                case let .success(value): _result.modifier = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: BigDecimal.self, source: sourceDictionary["gram_weight"] as AnyObject?) {
-                case let .success(value): _result.gramWeight = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["data_points"] as AnyObject?) {
-                case let .success(value): _result.dataPoints = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["footnote"] as AnyObject?) {
-                case let .success(value): _result.footnote = value
-                case let .failure(error): break
-                }
-                return .success(_result)
-            } else {
-                return .failure(.typeMismatch(expected: "BrandedFoodObjectPortions", actual: "\(source)"))
-            }
-        }
         // Decoder for [BrandedFoodObjectServing]
         Decoders.addDecoder(clazz: [BrandedFoodObjectServing].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[BrandedFoodObjectServing]> in
             return Decoders.decode(clazz: [BrandedFoodObjectServing].self, source: source)
@@ -1067,6 +987,40 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "IngredientObject", actual: "\(source)"))
             }
         }
+        // Decoder for [IngredientObjectComponents]
+        Decoders.addDecoder(clazz: [IngredientObjectComponents].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[IngredientObjectComponents]> in
+            return Decoders.decode(clazz: [IngredientObjectComponents].self, source: source)
+        }
+
+        // Decoder for IngredientObjectComponents
+        Decoders.addDecoder(clazz: IngredientObjectComponents.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<IngredientObjectComponents> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? IngredientObjectComponents() : instance as! IngredientObjectComponents
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?) {
+                case let .success(value): _result.name = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: BigDecimal.self, source: sourceDictionary["pct_weight"] as AnyObject?) {
+                case let .success(value): _result.pctWeight = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: BigDecimal.self, source: sourceDictionary["gram_weight"] as AnyObject?) {
+                case let .success(value): _result.gramWeight = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["is_refuse"] as AnyObject?) {
+                case let .success(value): _result.isRefuse = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["data_points"] as AnyObject?) {
+                case let .success(value): _result.dataPoints = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "IngredientObjectComponents", actual: "\(source)"))
+            }
+        }
         // Decoder for [IngredientObjectItems]
         Decoders.addDecoder(clazz: [IngredientObjectItems].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[IngredientObjectItems]> in
             return Decoders.decode(clazz: [IngredientObjectItems].self, source: source)
@@ -1100,11 +1054,11 @@ class Decoders {
                 case let .success(value): _result.dietLabels = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: [BrandedFoodObjectComponents].self, source: sourceDictionary["components"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: [IngredientObjectComponents].self, source: sourceDictionary["components"] as AnyObject?) {
                 case let .success(value): _result.components = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: [BrandedFoodObjectPortions].self, source: sourceDictionary["portions"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: [IngredientObjectPortions].self, source: sourceDictionary["portions"] as AnyObject?) {
                 case let .success(value): _result.portions = value
                 case let .failure(error): break
                 }
@@ -1141,6 +1095,44 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "IngredientObjectNutrients", actual: "\(source)"))
+            }
+        }
+        // Decoder for [IngredientObjectPortions]
+        Decoders.addDecoder(clazz: [IngredientObjectPortions].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[IngredientObjectPortions]> in
+            return Decoders.decode(clazz: [IngredientObjectPortions].self, source: source)
+        }
+
+        // Decoder for IngredientObjectPortions
+        Decoders.addDecoder(clazz: IngredientObjectPortions.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<IngredientObjectPortions> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? IngredientObjectPortions() : instance as! IngredientObjectPortions
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["measurement_unit"] as AnyObject?) {
+                case let .success(value): _result.measurementUnit = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["description"] as AnyObject?) {
+                case let .success(value): _result.description = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["modifier"] as AnyObject?) {
+                case let .success(value): _result.modifier = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: BigDecimal.self, source: sourceDictionary["gram_weight"] as AnyObject?) {
+                case let .success(value): _result.gramWeight = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["data_points"] as AnyObject?) {
+                case let .success(value): _result.dataPoints = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["footnote"] as AnyObject?) {
+                case let .success(value): _result.footnote = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "IngredientObjectPortions", actual: "\(source)"))
             }
         }
     }()
