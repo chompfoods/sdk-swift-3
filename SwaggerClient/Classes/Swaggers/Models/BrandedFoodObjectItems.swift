@@ -51,8 +51,6 @@ open class BrandedFoodObjectItems: JSONEncodable {
     public var description: String?
     /** An array of keywords that can be used to describe this item */
     public var keywords: [String]?
-    /** Comments on any unusual aspects of this item. Examples might include unusual aspects of the food overall. */
-    public var footnote: String?
 
     public init() {}
 
@@ -84,7 +82,6 @@ open class BrandedFoodObjectItems: JSONEncodable {
         nillableDictionary["vitamins"] = self.vitamins?.encodeToJSON()
         nillableDictionary["description"] = self.description
         nillableDictionary["keywords"] = self.keywords?.encodeToJSON()
-        nillableDictionary["footnote"] = self.footnote
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

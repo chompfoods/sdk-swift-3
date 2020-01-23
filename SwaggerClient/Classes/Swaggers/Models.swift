@@ -654,10 +654,6 @@ class Decoders {
                 case let .success(value): _result.keywords = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["footnote"] as AnyObject?) {
-                case let .success(value): _result.footnote = value
-                case let .failure(error): break
-                }
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "BrandedFoodObjectItems", actual: "\(source)"))
