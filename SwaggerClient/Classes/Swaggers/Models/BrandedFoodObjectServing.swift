@@ -10,16 +10,21 @@ import Foundation
 
 /** An object containing serving information for this item */
 open class BrandedFoodObjectServing: JSONEncodable {
-    public var chomp: BrandedFoodObjectServingChomp?
-    public var usda: BrandedFoodObjectServingUsda?
+    /** Serving size */
+    public var size: String?
+    /** Measurement unit for each serving (e.g. if measure is 3 tsp, the unit is tsp) */
+    public var measurementUnit: String?
+    /** Serving size description */
+    public var sizeFulltext: String?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["chomp"] = self.chomp?.encodeToJSON()
-        nillableDictionary["usda"] = self.usda?.encodeToJSON()
+        nillableDictionary["size"] = self.size
+        nillableDictionary["measurement_unit"] = self.measurementUnit
+        nillableDictionary["size_fulltext"] = self.sizeFulltext
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

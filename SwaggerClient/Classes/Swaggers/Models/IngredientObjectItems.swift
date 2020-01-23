@@ -13,7 +13,8 @@ open class IngredientObjectItems: JSONEncodable {
     /** Item name as provided by brand owner or as shown on packaging */
     public var name: String?
     public var categories: [String]?
-    public var nutrients: IngredientObjectNutrients?
+    /** An array containing nutrient informatio objects for this food item */
+    public var nutrients: [IngredientObjectNutrients]?
     public var calorieConversionFactor: IngredientObjectCalorieConversionFactor?
     /** The multiplication factor used to calculate protein from nitrogen */
     public var proteinConversionFactor: BigDecimal?
