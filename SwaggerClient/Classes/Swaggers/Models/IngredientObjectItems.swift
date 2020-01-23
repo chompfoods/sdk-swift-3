@@ -14,7 +14,7 @@ open class IngredientObjectItems: JSONEncodable {
     public var name: String?
     public var categories: [String]?
     public var nutrients: IngredientObjectNutrients?
-    public var calorieConversionFactor: BrandedFoodObjectCalorieConversionFactor?
+    public var calorieConversionFactor: IngredientObjectCalorieConversionFactor?
     /** The multiplication factor used to calculate protein from nitrogen */
     public var proteinConversionFactor: BigDecimal?
     public var dietLabels: BrandedFoodObjectDietLabels?

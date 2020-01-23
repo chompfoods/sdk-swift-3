@@ -21,9 +21,6 @@ open class BrandedFoodObjectItems: JSONEncodable {
     public var serving: BrandedFoodObjectServing?
     public var categories: [String]?
     public var nutrients: BrandedFoodObjectNutrients?
-    public var calorieConversionFactor: BrandedFoodObjectCalorieConversionFactor?
-    /** The multiplication factor used to calculate protein from nitrogen */
-    public var proteinConversionFactor: BigDecimal?
     public var dietLabels: BrandedFoodObjectDietLabels?
     /** An array of ingredient objects that were flagged while grading this item for compatibility with each diet */
     public var dietFlags: [BrandedFoodObjectDietFlags]?
@@ -65,8 +62,6 @@ open class BrandedFoodObjectItems: JSONEncodable {
         nillableDictionary["serving"] = self.serving?.encodeToJSON()
         nillableDictionary["categories"] = self.categories?.encodeToJSON()
         nillableDictionary["nutrients"] = self.nutrients?.encodeToJSON()
-        nillableDictionary["calorie_conversion_factor"] = self.calorieConversionFactor?.encodeToJSON()
-        nillableDictionary["protein_conversion_factor"] = self.proteinConversionFactor?.encodeToJSON()
         nillableDictionary["diet_labels"] = self.dietLabels?.encodeToJSON()
         nillableDictionary["diet_flags"] = self.dietFlags?.encodeToJSON()
         nillableDictionary["packaging_photos"] = self.packagingPhotos?.encodeToJSON()
