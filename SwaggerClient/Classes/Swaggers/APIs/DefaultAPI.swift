@@ -841,7 +841,7 @@ open class DefaultAPI: APIBase {
      - parameter limit: (query) #### Set maximum number of records you want the API to return, per search term.  **Example** &gt; &#x60;&#x60;&#x60;&amp;limit&#x3D;3&#x60;&#x60;&#x60;  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func foodIngredientSearchPhpGet(find: Int32, raw: Bool? = nil, limit: Limit_foodIngredientSearchPhpGet? = nil, completion: @escaping ((_ data: IngredientObject?, _ error: ErrorResponse?) -> Void)) {
+    open class func foodIngredientSearchPhpGet(find: String, raw: Bool? = nil, limit: Limit_foodIngredientSearchPhpGet? = nil, completion: @escaping ((_ data: IngredientObject?, _ error: ErrorResponse?) -> Void)) {
         foodIngredientSearchPhpGetWithRequestBuilder(find: find, raw: raw, limit: limit).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1035,13 +1035,13 @@ open class DefaultAPI: APIBase {
      - parameter limit: (query) #### Set maximum number of records you want the API to return, per search term.  **Example** &gt; &#x60;&#x60;&#x60;&amp;limit&#x3D;3&#x60;&#x60;&#x60;  (optional)
      - returns: RequestBuilder<IngredientObject> 
      */
-    open class func foodIngredientSearchPhpGetWithRequestBuilder(find: Int32, raw: Bool? = nil, limit: Limit_foodIngredientSearchPhpGet? = nil) -> RequestBuilder<IngredientObject> {
+    open class func foodIngredientSearchPhpGetWithRequestBuilder(find: String, raw: Bool? = nil, limit: Limit_foodIngredientSearchPhpGet? = nil) -> RequestBuilder<IngredientObject> {
         let path = "/food/ingredient/search.php"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-                        "find": find.encodeToJSON(),
+                        "find": find,
                         "raw": raw,
                         "limit": limit?.rawValue
         ])
