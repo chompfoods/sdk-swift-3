@@ -916,6 +916,14 @@ class Decoders {
                 case let .success(value): _result.footnote = value
                 case let .failure(error): break
                 }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["search_term"] as AnyObject?) {
+                case let .success(value): _result.searchTerm = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["score"] as AnyObject?) {
+                case let .success(value): _result.score = value
+                case let .failure(error): break
+                }
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "IngredientObjectItems", actual: "\(source)"))

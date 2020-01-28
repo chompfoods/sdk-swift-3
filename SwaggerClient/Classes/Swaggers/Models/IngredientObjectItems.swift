@@ -26,6 +26,10 @@ open class IngredientObjectItems: JSONEncodable {
     public var commonName: String?
     /** Comments on any unusual aspects of this item. Examples might include unusual aspects of the food overall. */
     public var footnote: String?
+    /** The original search term that found this food item. */
+    public var searchTerm: String?
+    /** A value that represents how similar the name of this food item is to the original search term. */
+    public var score: String?
 
     public init() {}
 
@@ -41,6 +45,8 @@ open class IngredientObjectItems: JSONEncodable {
         nillableDictionary["portions"] = self.portions?.encodeToJSON()
         nillableDictionary["common_name"] = self.commonName
         nillableDictionary["footnote"] = self.footnote
+        nillableDictionary["search_term"] = self.searchTerm
+        nillableDictionary["score"] = self.score
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary
