@@ -900,10 +900,6 @@ class Decoders {
                 case let .success(value): _result.proteinConversionFactor = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: BrandedFoodObjectDietLabels.self, source: sourceDictionary["diet_labels"] as AnyObject?) {
-                case let .success(value): _result.dietLabels = value
-                case let .failure(error): break
-                }
                 switch Decoders.decodeOptional(clazz: [IngredientObjectComponents].self, source: sourceDictionary["components"] as AnyObject?) {
                 case let .success(value): _result.components = value
                 case let .failure(error): break
@@ -914,10 +910,6 @@ class Decoders {
                 }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["common_name"] as AnyObject?) {
                 case let .success(value): _result.commonName = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["description"] as AnyObject?) {
-                case let .success(value): _result.description = value
                 case let .failure(error): break
                 }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["footnote"] as AnyObject?) {
