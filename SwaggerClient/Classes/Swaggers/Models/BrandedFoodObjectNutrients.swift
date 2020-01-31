@@ -8,20 +8,32 @@
 import Foundation
 
 
-/** An object containing nutrient information from multiple sources */
+/** An object containing information for a specific nutrient found in this food item */
 open class BrandedFoodObjectNutrients: JSONEncodable {
-    /** An array containing an object for each nutrient data point */
-    public var chomp: [BrandedFoodObjectNutrientsChomp]?
-    /** An array containing an object for each nutrient data point as found in the USDA database */
-    public var usda: [BrandedFoodObjectNutrientsUsda]?
+    /** Nutrient name */
+    public var name: String?
+    /** Amount of the nutrient per 100g of food */
+    public var per100g: BigDecimal?
+    /** The unit used for the measure of this nutrient */
+    public var measurementUnit: String?
+    /** Nutrient rank */
+    public var rank: Int32?
+    /** Number of observations on which the value is based */
+    public var dataPoints: Int32?
+    /** Description of the nutrient source */
+    public var description: String?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["chomp"] = self.chomp?.encodeToJSON()
-        nillableDictionary["usda"] = self.usda?.encodeToJSON()
+        nillableDictionary["name"] = self.name
+        nillableDictionary["per_100g"] = self.per100g?.encodeToJSON()
+        nillableDictionary["measurement_unit"] = self.measurementUnit
+        nillableDictionary["rank"] = self.rank?.encodeToJSON()
+        nillableDictionary["data_points"] = self.dataPoints?.encodeToJSON()
+        nillableDictionary["description"] = self.description
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

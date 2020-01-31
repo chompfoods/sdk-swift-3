@@ -8,17 +8,44 @@
 import Foundation
 
 
-/** An object containing nutrient information from each source */
+/** An object containing information for a specific nutrient found in this food item */
 open class IngredientObjectNutrients: JSONEncodable {
-    /** An array containing an object for each nutrient data point as found in the USDA database */
-    public var usda: [BrandedFoodObjectNutrientsUsda]?
+    /** Nutrient name */
+    public var name: String?
+    /** Amount of the nutrient per 100g of food */
+    public var per100g: BigDecimal?
+    /** The unit used for the measure of this nutrient */
+    public var measurementUnit: String?
+    /** Minimum nutrient value */
+    public var min: BigDecimal?
+    /** Maximum nutrient value */
+    public var max: BigDecimal?
+    /** Median nutrient value */
+    public var median: BigDecimal?
+    /** Nutrient rank */
+    public var rank: Int32?
+    /** Number of observations on which the value is based */
+    public var dataPoints: Int32?
+    /** Comments on any unusual aspect of the food nutrient. Examples might include why a nutrient value is different than typically expected. */
+    public var footnote: String?
+    /** Description of the nutrient source */
+    public var description: String?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["usda"] = self.usda?.encodeToJSON()
+        nillableDictionary["name"] = self.name
+        nillableDictionary["per_100g"] = self.per100g?.encodeToJSON()
+        nillableDictionary["measurement_unit"] = self.measurementUnit
+        nillableDictionary["min"] = self.min?.encodeToJSON()
+        nillableDictionary["max"] = self.max?.encodeToJSON()
+        nillableDictionary["median"] = self.median?.encodeToJSON()
+        nillableDictionary["rank"] = self.rank?.encodeToJSON()
+        nillableDictionary["data_points"] = self.dataPoints?.encodeToJSON()
+        nillableDictionary["footnote"] = self.footnote
+        nillableDictionary["description"] = self.description
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

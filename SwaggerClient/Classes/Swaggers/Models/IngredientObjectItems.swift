@@ -13,21 +13,23 @@ open class IngredientObjectItems: JSONEncodable {
     /** Item name as provided by brand owner or as shown on packaging */
     public var name: String?
     public var categories: [String]?
-    public var nutrients: IngredientObjectNutrients?
-    public var calorieConversionFactor: BrandedFoodObjectCalorieConversionFactor?
+    /** An array containing nutrient informatio objects for this food item */
+    public var nutrients: [IngredientObjectNutrients]?
+    public var calorieConversionFactor: IngredientObjectCalorieConversionFactor?
     /** The multiplication factor used to calculate protein from nitrogen */
     public var proteinConversionFactor: BigDecimal?
-    public var dietLabels: BrandedFoodObjectDietLabels?
     /** An array of objects containing the constituent parts of a food (e.g. bone is a component of meat) */
-    public var components: [BrandedFoodObjectComponents]?
+    public var components: [IngredientObjectComponents]?
     /** An array of objects containing information on discrete amounts of a food found in this item */
-    public var portions: [BrandedFoodObjectPortions]?
-    /** Common names associated with this item. These generally clarify what the item is (e.g. when the brand name is \&quot;BRAND&#x27;s Spicy Enchilada\&quot; the common name may be \&quot;Chicken enchilada\&quot;) */
+    public var portions: [IngredientObjectPortions]?
+    /** Common name associated with this item. These generally clarify what the item is (e.g. when the brand name is \&quot;BRAND&#x27;s Spicy Enchilada\&quot; the common name may be \&quot;Chicken enchilada\&quot;) */
     public var commonName: String?
-    /** A description of this item */
-    public var description: String?
-    /** Comments on any unusual aspects of this item. Examples might include unusual aspects of the food overall. */
+    /** Comments on any unusual aspects of this item. Examples might include unusual aspects of the food overall */
     public var footnote: String?
+    /** The original search term that found this food item */
+    public var searchTerm: String?
+    /** A value that represents how similar the name of this food item is to the original search term. The lower the value the closer this item&#x27;s name is to the original search term. */
+    public var score: String?
 
     public init() {}
 
@@ -39,12 +41,12 @@ open class IngredientObjectItems: JSONEncodable {
         nillableDictionary["nutrients"] = self.nutrients?.encodeToJSON()
         nillableDictionary["calorie_conversion_factor"] = self.calorieConversionFactor?.encodeToJSON()
         nillableDictionary["protein_conversion_factor"] = self.proteinConversionFactor?.encodeToJSON()
-        nillableDictionary["diet_labels"] = self.dietLabels?.encodeToJSON()
         nillableDictionary["components"] = self.components?.encodeToJSON()
         nillableDictionary["portions"] = self.portions?.encodeToJSON()
         nillableDictionary["common_name"] = self.commonName
-        nillableDictionary["description"] = self.description
         nillableDictionary["footnote"] = self.footnote
+        nillableDictionary["search_term"] = self.searchTerm
+        nillableDictionary["score"] = self.score
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

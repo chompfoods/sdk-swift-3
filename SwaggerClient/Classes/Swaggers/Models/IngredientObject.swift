@@ -8,7 +8,7 @@
 import Foundation
 
 
-/** Please read the description of each field in this API response object example. By default, the value of each field is __null__. This indicates an unknown state or that no data exists. */
+/** Please read the description of each field in this API response object example. By default, the value of each field is **null**. This indicates an unknown state or that no data exists. */
 open class IngredientObject: JSONEncodable {
     /** An array containing an object for each individual item returned by your API call. */
     public var items: [IngredientObjectItems]?

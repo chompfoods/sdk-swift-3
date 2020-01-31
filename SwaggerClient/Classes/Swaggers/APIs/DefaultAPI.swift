@@ -12,7 +12,7 @@ import Alamofire
 open class DefaultAPI: APIBase {
     /**
      Get a branded food item using a barcode
-     - parameter code: (query) UPC/EAN barcode  __Example:__ 0842234000988  __Resources:__ [Database search](https://chompthis.com/api/lookup.php)  _Read [this article](https://desk.zoho.com/portal/chompthis/kb/articles/im-having-trouble-getting-matches-for-barcodes-what-can-id-do) for tips and tricks._  
+     - parameter code: (query) #### UPC/EAN barcode  **Example** &gt; &#x60;&#x60;&#x60;&amp;code&#x3D;0842234000988&#x60;&#x60;&#x60;  
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func foodBrandedBarcodePhpGet(code: String, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
@@ -25,81 +25,65 @@ open class DefaultAPI: APIBase {
     /**
      Get a branded food item using a barcode
      - GET /food/branded/barcode.php
-     - # Get data for a branded food using the food's UPC/EAN barcode.  __Example:__ ```https://chompthis.com/api/v2/food/branded/barcode.php?api_key=API_KEY&code=CODE``` 
+     - ## Get data for a branded food using the food's UPC/EAN barcode.  **Example**  > ```https://chompthis.com/api/v2/food/branded/barcode.php?api_key=API_KEY&code=CODE```  **Tips**   * Read our **[Knowledge Base article](https://desk.zoho.com/portal/chompthis/kb/articles/im-having-trouble-getting-matches-for-barcodes-what-can-id-do)** for helpful tips and tricks. 
      - API Key:
        - type: apiKey api_key (QUERY)
        - name: ApiKeyAuth
      - examples: [{contentType=application/json, example={
   "items" : [ {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
+    "package" : {
+      "quantity" : 0,
+      "size" : "size"
+    },
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
-      "english_speaking" : 2,
-      "non_english_speaking" : 6
+      "english_speaking" : 7,
+      "non_english_speaking" : 1
     },
+    "traces" : [ "traces", "traces" ],
     "description" : "description",
+    "diet_flags" : [ {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    }, {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    } ],
+    "countries" : [ "countries", "countries" ],
     "has_english_ingredients" : true,
     "palm_oil_ingredients" : [ "palm_oil_ingredients", "palm_oil_ingredients" ],
     "serving" : {
-      "total" : 5,
       "size_fulltext" : "size_fulltext",
-      "size" : 1,
+      "size" : "size",
       "measurement_unit" : "measurement_unit"
     },
-    "nutrients" : {
-      "chomp" : [ {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      }, {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      } ],
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
-    "protein_conversion_factor" : 7.457744773683766,
+    "nutrients" : [ {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    }, {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    } ],
+    "allergens" : [ "allergens", "allergens" ],
     "packaging_photos" : {
       "nutrition" : {
         "small" : "small",
@@ -117,152 +101,91 @@ open class DefaultAPI: APIBase {
         "display" : "display"
       }
     },
+    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
+    "vitamins" : [ "vitamins", "vitamins" ],
     "diet_labels" : {
       "vegetarian" : {
         "confidence_description" : "confidence_description",
         "confidence" : 9,
         "name" : "name",
-        "compatibility_level" : 5,
+        "compatibility_level" : 7,
         "is_compatible" : true
       },
       "vegan" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 4,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 1,
+        "compatibility_level" : 5,
         "is_compatible" : true
       },
       "gluten_free" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 6,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 9,
+        "compatibility_level" : 3,
         "is_compatible" : true
       }
     },
+    "name" : "name",
     "ingredients" : "ingredients",
     "categories" : [ "categories", "categories" ],
-    "common_name" : "common_name",
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
-    "package" : {
-      "quantity" : 0,
-      "size" : 6
-    },
-    "traces" : [ "traces", "traces" ],
-    "diet_flags" : [ {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    }, {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    } ],
-    "countries" : [ "countries", "countries" ],
-    "footnote" : "footnote",
-    "allergens" : [ "allergens", "allergens" ],
-    "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
-    },
-    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
-    "name" : "name",
     "brand_list" : [ "brand_list", "brand_list" ]
   }, {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
+    "package" : {
+      "quantity" : 0,
+      "size" : "size"
+    },
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
-      "english_speaking" : 2,
-      "non_english_speaking" : 6
+      "english_speaking" : 7,
+      "non_english_speaking" : 1
     },
+    "traces" : [ "traces", "traces" ],
     "description" : "description",
+    "diet_flags" : [ {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    }, {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    } ],
+    "countries" : [ "countries", "countries" ],
     "has_english_ingredients" : true,
     "palm_oil_ingredients" : [ "palm_oil_ingredients", "palm_oil_ingredients" ],
     "serving" : {
-      "total" : 5,
       "size_fulltext" : "size_fulltext",
-      "size" : 1,
+      "size" : "size",
       "measurement_unit" : "measurement_unit"
     },
-    "nutrients" : {
-      "chomp" : [ {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      }, {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      } ],
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
-    "protein_conversion_factor" : 7.457744773683766,
+    "nutrients" : [ {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    }, {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    } ],
+    "allergens" : [ "allergens", "allergens" ],
     "packaging_photos" : {
       "nutrition" : {
         "small" : "small",
@@ -280,85 +203,40 @@ open class DefaultAPI: APIBase {
         "display" : "display"
       }
     },
+    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
+    "vitamins" : [ "vitamins", "vitamins" ],
     "diet_labels" : {
       "vegetarian" : {
         "confidence_description" : "confidence_description",
         "confidence" : 9,
         "name" : "name",
-        "compatibility_level" : 5,
+        "compatibility_level" : 7,
         "is_compatible" : true
       },
       "vegan" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 4,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 1,
+        "compatibility_level" : 5,
         "is_compatible" : true
       },
       "gluten_free" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 6,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 9,
+        "compatibility_level" : 3,
         "is_compatible" : true
       }
     },
+    "name" : "name",
     "ingredients" : "ingredients",
     "categories" : [ "categories", "categories" ],
-    "common_name" : "common_name",
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
-    "package" : {
-      "quantity" : 0,
-      "size" : 6
-    },
-    "traces" : [ "traces", "traces" ],
-    "diet_flags" : [ {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    }, {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    } ],
-    "countries" : [ "countries", "countries" ],
-    "footnote" : "footnote",
-    "allergens" : [ "allergens", "allergens" ],
-    "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
-    },
-    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
-    "name" : "name",
     "brand_list" : [ "brand_list", "brand_list" ]
   } ]
 }}]
-     - parameter code: (query) UPC/EAN barcode  __Example:__ 0842234000988  __Resources:__ [Database search](https://chompthis.com/api/lookup.php)  _Read [this article](https://desk.zoho.com/portal/chompthis/kb/articles/im-having-trouble-getting-matches-for-barcodes-what-can-id-do) for tips and tricks._  
+     - parameter code: (query) #### UPC/EAN barcode  **Example** &gt; &#x60;&#x60;&#x60;&amp;code&#x3D;0842234000988&#x60;&#x60;&#x60;  
      - returns: RequestBuilder<BrandedFoodObject> 
      */
     open class func foodBrandedBarcodePhpGetWithRequestBuilder(code: String) -> RequestBuilder<BrandedFoodObject> {
@@ -368,374 +246,6 @@ open class DefaultAPI: APIBase {
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
                         "code": code
-        ])
-
-        let requestBuilder: RequestBuilder<BrandedFoodObject>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
-     Get a branded food item using an ID number
-     - parameter id: (query) Chomp branded food ID.  _Set \&quot;source&#x3D;USDA\&quot; if you wish to pass in the food&#x27;s FoodData Central ID (fdc_id)._  __Example #1:__ 15  __Resources:__ [Find branded food IDs](https://chompthis.com/api/lookup.php)  
-     - parameter source: (query) Specify the data source (optional).  You must pass in \&quot;USDA\&quot; if you want to look up a food item using a USDA FDC ID.  __Example:__ USDA _(defaults to \&quot;Chomp\&quot;)_  (optional)
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func foodBrandedIdPhpGet(id: Int32, source: String? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
-        foodBrandedIdPhpGetWithRequestBuilder(id: id, source: source).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Get a branded food item using an ID number
-     - GET /food/branded/id.php
-     - # Get data for a branded food using Chomp's internal ID number.  _Alternatively, set the \"source\" parameter to \"USDA\" and use the food's FDC ID._  __Example:__ ```https://chompthis.com/api/v2/food/branded/id.php?api_key=API_KEY&id=ID``` 
-     - API Key:
-       - type: apiKey api_key (QUERY)
-       - name: ApiKeyAuth
-     - examples: [{contentType=application/json, example={
-  "items" : [ {
-    "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
-    "keywords" : [ "keywords", "keywords" ],
-    "country_details" : {
-      "english_speaking" : 2,
-      "non_english_speaking" : 6
-    },
-    "description" : "description",
-    "has_english_ingredients" : true,
-    "palm_oil_ingredients" : [ "palm_oil_ingredients", "palm_oil_ingredients" ],
-    "serving" : {
-      "total" : 5,
-      "size_fulltext" : "size_fulltext",
-      "size" : 1,
-      "measurement_unit" : "measurement_unit"
-    },
-    "nutrients" : {
-      "chomp" : [ {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      }, {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      } ],
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
-    "protein_conversion_factor" : 7.457744773683766,
-    "packaging_photos" : {
-      "nutrition" : {
-        "small" : "small",
-        "thumb" : "thumb",
-        "display" : "display"
-      },
-      "ingredients" : {
-        "small" : "small",
-        "thumb" : "thumb",
-        "display" : "display"
-      },
-      "front" : {
-        "small" : "small",
-        "thumb" : "thumb",
-        "display" : "display"
-      }
-    },
-    "diet_labels" : {
-      "vegetarian" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 9,
-        "name" : "name",
-        "compatibility_level" : 5,
-        "is_compatible" : true
-      },
-      "vegan" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 4,
-        "name" : "name",
-        "compatibility_level" : 1,
-        "is_compatible" : true
-      },
-      "gluten_free" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 6,
-        "name" : "name",
-        "compatibility_level" : 9,
-        "is_compatible" : true
-      }
-    },
-    "ingredients" : "ingredients",
-    "categories" : [ "categories", "categories" ],
-    "common_name" : "common_name",
-    "barcode" : "barcode",
-    "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
-    "package" : {
-      "quantity" : 0,
-      "size" : 6
-    },
-    "traces" : [ "traces", "traces" ],
-    "diet_flags" : [ {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    }, {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    } ],
-    "countries" : [ "countries", "countries" ],
-    "footnote" : "footnote",
-    "allergens" : [ "allergens", "allergens" ],
-    "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
-    },
-    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
-    "name" : "name",
-    "brand_list" : [ "brand_list", "brand_list" ]
-  }, {
-    "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
-    "keywords" : [ "keywords", "keywords" ],
-    "country_details" : {
-      "english_speaking" : 2,
-      "non_english_speaking" : 6
-    },
-    "description" : "description",
-    "has_english_ingredients" : true,
-    "palm_oil_ingredients" : [ "palm_oil_ingredients", "palm_oil_ingredients" ],
-    "serving" : {
-      "total" : 5,
-      "size_fulltext" : "size_fulltext",
-      "size" : 1,
-      "measurement_unit" : "measurement_unit"
-    },
-    "nutrients" : {
-      "chomp" : [ {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      }, {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      } ],
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
-    "protein_conversion_factor" : 7.457744773683766,
-    "packaging_photos" : {
-      "nutrition" : {
-        "small" : "small",
-        "thumb" : "thumb",
-        "display" : "display"
-      },
-      "ingredients" : {
-        "small" : "small",
-        "thumb" : "thumb",
-        "display" : "display"
-      },
-      "front" : {
-        "small" : "small",
-        "thumb" : "thumb",
-        "display" : "display"
-      }
-    },
-    "diet_labels" : {
-      "vegetarian" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 9,
-        "name" : "name",
-        "compatibility_level" : 5,
-        "is_compatible" : true
-      },
-      "vegan" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 4,
-        "name" : "name",
-        "compatibility_level" : 1,
-        "is_compatible" : true
-      },
-      "gluten_free" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 6,
-        "name" : "name",
-        "compatibility_level" : 9,
-        "is_compatible" : true
-      }
-    },
-    "ingredients" : "ingredients",
-    "categories" : [ "categories", "categories" ],
-    "common_name" : "common_name",
-    "barcode" : "barcode",
-    "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
-    "package" : {
-      "quantity" : 0,
-      "size" : 6
-    },
-    "traces" : [ "traces", "traces" ],
-    "diet_flags" : [ {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    }, {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    } ],
-    "countries" : [ "countries", "countries" ],
-    "footnote" : "footnote",
-    "allergens" : [ "allergens", "allergens" ],
-    "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
-    },
-    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
-    "name" : "name",
-    "brand_list" : [ "brand_list", "brand_list" ]
-  } ]
-}}]
-     - parameter id: (query) Chomp branded food ID.  _Set \&quot;source&#x3D;USDA\&quot; if you wish to pass in the food&#x27;s FoodData Central ID (fdc_id)._  __Example #1:__ 15  __Resources:__ [Find branded food IDs](https://chompthis.com/api/lookup.php)  
-     - parameter source: (query) Specify the data source (optional).  You must pass in \&quot;USDA\&quot; if you want to look up a food item using a USDA FDC ID.  __Example:__ USDA _(defaults to \&quot;Chomp\&quot;)_  (optional)
-     - returns: RequestBuilder<BrandedFoodObject> 
-     */
-    open class func foodBrandedIdPhpGetWithRequestBuilder(id: Int32, source: String? = nil) -> RequestBuilder<BrandedFoodObject> {
-        let path = "/food/branded/id.php"
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-                        "id": id.encodeToJSON(),
-                        "source": source
         ])
 
         let requestBuilder: RequestBuilder<BrandedFoodObject>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
@@ -761,12 +271,13 @@ open class DefaultAPI: APIBase {
 
     /**
      Get a branded food item by name
-     - parameter name: (query) Branded food name  __Example:__ Starburst  __Resources:__ [Find branded food names](https://chompthis.com/api/lookup.php)  
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Note:__ The maximum value is 10._  __Example:__ 3 _(defaults to 10)_  (optional)
+     - parameter name: (query) #### Search for branded food items using a general food name keyword. This does not have to exactly match the \&quot;official\&quot; name for the food.  **Example** &gt; &#x60;&#x60;&#x60;&amp;name&#x3D;Starburst&#x60;&#x60;&#x60;  
+     - parameter limit: (query) #### Set maximum number of records you want the API to return. The default value is \&quot;**10**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;limit&#x3D;10&#x60;&#x60;&#x60;  (optional)
+     - parameter page: (query) #### This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on. The default value is \&quot;**1**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;page&#x3D;1&#x60;&#x60;&#x60;  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func foodBrandedNamePhpGet(name: String, limit: Limit_foodBrandedNamePhpGet? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
-        foodBrandedNamePhpGetWithRequestBuilder(name: name, limit: limit).execute { (response, error) -> Void in
+    open class func foodBrandedNamePhpGet(name: String, limit: Limit_foodBrandedNamePhpGet? = nil, page: Int32? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
+        foodBrandedNamePhpGetWithRequestBuilder(name: name, limit: limit, page: page).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -775,81 +286,65 @@ open class DefaultAPI: APIBase {
     /**
      Get a branded food item by name
      - GET /food/branded/name.php
-     - # Search for branded food items by name.  __Example:__ ```https://chompthis.com/api/v2/food/branded/name.php?api_key=API_KEY&name=NAME``` 
+     - ## Search for branded food items by name.  **Example** > ```https://chompthis.com/api/v2/food/branded/name.php?api_key=API_KEY&name=NAME```  **Tips**   * Get started by using our **[food lookup tool](https://chompthis.com/api/lookup.php)**.  > This API endpoint is only available to Standard and Premium API subscribers. Please consider upgrading your subscription if you are subscribed to the Limited plan. **[Read this](https://desk.zoho.com/portal/chompthis/kb/articles/can-i-upgrade-downgrade-my-subscription)** if you aren't sure how to upgrade your subscription. 
      - API Key:
        - type: apiKey api_key (QUERY)
        - name: ApiKeyAuth
      - examples: [{contentType=application/json, example={
   "items" : [ {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
+    "package" : {
+      "quantity" : 0,
+      "size" : "size"
+    },
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
-      "english_speaking" : 2,
-      "non_english_speaking" : 6
+      "english_speaking" : 7,
+      "non_english_speaking" : 1
     },
+    "traces" : [ "traces", "traces" ],
     "description" : "description",
+    "diet_flags" : [ {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    }, {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    } ],
+    "countries" : [ "countries", "countries" ],
     "has_english_ingredients" : true,
     "palm_oil_ingredients" : [ "palm_oil_ingredients", "palm_oil_ingredients" ],
     "serving" : {
-      "total" : 5,
       "size_fulltext" : "size_fulltext",
-      "size" : 1,
+      "size" : "size",
       "measurement_unit" : "measurement_unit"
     },
-    "nutrients" : {
-      "chomp" : [ {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      }, {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      } ],
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
-    "protein_conversion_factor" : 7.457744773683766,
+    "nutrients" : [ {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    }, {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    } ],
+    "allergens" : [ "allergens", "allergens" ],
     "packaging_photos" : {
       "nutrition" : {
         "small" : "small",
@@ -867,152 +362,91 @@ open class DefaultAPI: APIBase {
         "display" : "display"
       }
     },
+    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
+    "vitamins" : [ "vitamins", "vitamins" ],
     "diet_labels" : {
       "vegetarian" : {
         "confidence_description" : "confidence_description",
         "confidence" : 9,
         "name" : "name",
-        "compatibility_level" : 5,
+        "compatibility_level" : 7,
         "is_compatible" : true
       },
       "vegan" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 4,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 1,
+        "compatibility_level" : 5,
         "is_compatible" : true
       },
       "gluten_free" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 6,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 9,
+        "compatibility_level" : 3,
         "is_compatible" : true
       }
     },
+    "name" : "name",
     "ingredients" : "ingredients",
     "categories" : [ "categories", "categories" ],
-    "common_name" : "common_name",
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
-    "package" : {
-      "quantity" : 0,
-      "size" : 6
-    },
-    "traces" : [ "traces", "traces" ],
-    "diet_flags" : [ {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    }, {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    } ],
-    "countries" : [ "countries", "countries" ],
-    "footnote" : "footnote",
-    "allergens" : [ "allergens", "allergens" ],
-    "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
-    },
-    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
-    "name" : "name",
     "brand_list" : [ "brand_list", "brand_list" ]
   }, {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
+    "package" : {
+      "quantity" : 0,
+      "size" : "size"
+    },
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
-      "english_speaking" : 2,
-      "non_english_speaking" : 6
+      "english_speaking" : 7,
+      "non_english_speaking" : 1
     },
+    "traces" : [ "traces", "traces" ],
     "description" : "description",
+    "diet_flags" : [ {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    }, {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    } ],
+    "countries" : [ "countries", "countries" ],
     "has_english_ingredients" : true,
     "palm_oil_ingredients" : [ "palm_oil_ingredients", "palm_oil_ingredients" ],
     "serving" : {
-      "total" : 5,
       "size_fulltext" : "size_fulltext",
-      "size" : 1,
+      "size" : "size",
       "measurement_unit" : "measurement_unit"
     },
-    "nutrients" : {
-      "chomp" : [ {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      }, {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      } ],
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
-    "protein_conversion_factor" : 7.457744773683766,
+    "nutrients" : [ {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    }, {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    } ],
+    "allergens" : [ "allergens", "allergens" ],
     "packaging_photos" : {
       "nutrition" : {
         "small" : "small",
@@ -1030,101 +464,67 @@ open class DefaultAPI: APIBase {
         "display" : "display"
       }
     },
+    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
+    "vitamins" : [ "vitamins", "vitamins" ],
     "diet_labels" : {
       "vegetarian" : {
         "confidence_description" : "confidence_description",
         "confidence" : 9,
         "name" : "name",
-        "compatibility_level" : 5,
+        "compatibility_level" : 7,
         "is_compatible" : true
       },
       "vegan" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 4,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 1,
+        "compatibility_level" : 5,
         "is_compatible" : true
       },
       "gluten_free" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 6,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 9,
+        "compatibility_level" : 3,
         "is_compatible" : true
       }
     },
+    "name" : "name",
     "ingredients" : "ingredients",
     "categories" : [ "categories", "categories" ],
-    "common_name" : "common_name",
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
-    "package" : {
-      "quantity" : 0,
-      "size" : 6
-    },
-    "traces" : [ "traces", "traces" ],
-    "diet_flags" : [ {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    }, {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    } ],
-    "countries" : [ "countries", "countries" ],
-    "footnote" : "footnote",
-    "allergens" : [ "allergens", "allergens" ],
-    "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
-    },
-    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
-    "name" : "name",
     "brand_list" : [ "brand_list", "brand_list" ]
   } ]
 }}]
-     - parameter name: (query) Branded food name  __Example:__ Starburst  __Resources:__ [Find branded food names](https://chompthis.com/api/lookup.php)  
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Note:__ The maximum value is 10._  __Example:__ 3 _(defaults to 10)_  (optional)
+     - parameter name: (query) #### Search for branded food items using a general food name keyword. This does not have to exactly match the \&quot;official\&quot; name for the food.  **Example** &gt; &#x60;&#x60;&#x60;&amp;name&#x3D;Starburst&#x60;&#x60;&#x60;  
+     - parameter limit: (query) #### Set maximum number of records you want the API to return. The default value is \&quot;**10**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;limit&#x3D;10&#x60;&#x60;&#x60;  (optional)
+     - parameter page: (query) #### This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on. The default value is \&quot;**1**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;page&#x3D;1&#x60;&#x60;&#x60;  (optional)
      - returns: RequestBuilder<BrandedFoodObject> 
      */
-    open class func foodBrandedNamePhpGetWithRequestBuilder(name: String, limit: Limit_foodBrandedNamePhpGet? = nil) -> RequestBuilder<BrandedFoodObject> {
+    open class func foodBrandedNamePhpGetWithRequestBuilder(name: String, limit: Limit_foodBrandedNamePhpGet? = nil, page: Int32? = nil) -> RequestBuilder<BrandedFoodObject> {
         let path = "/food/branded/name.php"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
                         "name": name,
-                        "limit": limit?.rawValue
+                        "limit": limit?.rawValue,
+                        "page": page?.encodeToJSON()
         ])
 
         let requestBuilder: RequestBuilder<BrandedFoodObject>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter diet
+     */
+    public enum Diet_foodBrandedSearchPhpGet: String { 
+        case vegan = "Vegan"
+        case vegetarian = "Vegetarian"
+        case glutenFree = "Gluten Free"
     }
 
     /**
@@ -1145,23 +545,23 @@ open class DefaultAPI: APIBase {
 
     /**
      Get data for branded food items using various search parameters
-     - parameter allergen: (query) Specify a required allergen ingredient (optional)  __Example__: Peanuts  __Resources__: [List of allergens](https://chompthis.com/api/data/allergen.php)  (optional)
-     - parameter brand: (query) Specify a required brand (optional)  __Example__: Starbucks  __Resources__: [List of brands](https://chompthis.com/api/data/brand.php)  (optional)
-     - parameter category: (query) Specify a required category (optional)  __Example__: Pasta Dishes  __Resources__: [List of categories](https://chompthis.com/api/data/category.php)  (optional)
-     - parameter country: (query) Specify a required country (optional)  __Example__: United States  __Resources__: [List of countries](https://chompthis.com/api/data/country.php)  (optional)
-     - parameter diet: (query) Specify a required diet (optional)  _Filters the search to only include food items that are considered compatible with the following diets: Vegan, Vegetarian, Gluten Free_  __Example__: Gluten Free  __Resources__: [List of diets](https://chompthis.com/api/data/lifestyle.php)  (optional)
-     - parameter ingredient: (query) Specify a required ingredient (optional)  __Example__: Salt  __Resources__: [List of ingredients](https://chompthis.com/api/data/ingredient.php)  (optional)
-     - parameter keyword: (query) Specify a required keyword (optional)  __Example__: Starbucks  __Resources__: [List of brands](https://chompthis.com/api/data/brand.php)  (optional)
-     - parameter mineral: (query) Specify a required mineral (optional)  __Example__: Potassium  __Resources__: [List of minerals](https://chompthis.com/api/data/mineral.php)  (optional)
-     - parameter nutrient: (query) Specify a required nutrition label item (optional)  __Example__: Caffeine  __Resources__: [List of nutrition label items](https://chompthis.com/api/data/nutrition.php)  (optional)
-     - parameter palmOil: (query) Specify a required palm oil ingredient (optional)  __Example__: E160a Beta Carotene  __Resources__: [List of palm oil ingredients](https://chompthis.com/api/data/palm-oil.php)  (optional)
-     - parameter trace: (query) Specify a required trace ingredient (optional)  __Example__: Tree Nuts  __Resources__: [List of trace ingredients](https://chompthis.com/api/data/trace.php)  (optional)
-     - parameter vitamin: (query) Specify a required vitamin (optional)  __Example__: Biotin  __Resources__: [List of vitamins](https://chompthis.com/api/data/vitamin.php)  (optional)
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Note:__ The maximum value is 10._  __Example:__ 3 _(defaults to 10)_  (optional)
-     - parameter page: (query) Specify the search response page number.  _Each page will contain up to 10 items._  __Example__: 1 _(default)_  (optional)
+     - parameter allergen: (query) #### Filter the search to only include branded foods that contain a specific allergen.  **Example** &gt; &#x60;&#x60;&#x60;&amp;allergen&#x3D;Peanuts&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter brand: (query) #### Filter the search to only include branded foods that are owned by a specific brand.  **Example** &gt; &#x60;&#x60;&#x60;&amp;brand&#x3D;Starbucks&#x60;&#x60;&#x60;  (optional)
+     - parameter category: (query) #### Filter the search to only include branded foods from a specific category.  **Example** &gt; &#x60;&#x60;&#x60;&amp;category&#x3D;Plant Based Foods&#x60;&#x60;&#x60;  (optional)
+     - parameter country: (query) #### Filter the search to only include branded foods that are sold in a specific country.  **Example** &gt; &#x60;&#x60;&#x60;&amp;country&#x3D;United States&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter diet: (query) #### Filter the search to only include branded foods that are considered compatible with a specific diet.  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter ingredient: (query) #### Filter the search to only include branded foods that contain a specific ingredient.  **Example** &gt; &#x60;&#x60;&#x60;&amp;ingredient&#x3D;Salt&#x60;&#x60;&#x60;  (optional)
+     - parameter keyword: (query) #### Filter the search to only include branded foods that are associated with a specific keyword.  **Example** &gt; &#x60;&#x60;&#x60;&amp;keyword&#x3D;Organic&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter mineral: (query) #### Filter the search to only include branded foods that contain a specific mineral.  **Example** &gt; &#x60;&#x60;&#x60;&amp;mineral&#x3D;Potassium&#x60;&#x60;&#x60;  (optional)
+     - parameter nutrient: (query) #### Filter the search to only include branded foods that contain a specific nutrient.  **Example** &gt; &#x60;&#x60;&#x60;&amp;nutrient&#x3D;Caffeine&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter palmOil: (query) #### Filter the search to only include branded foods that contain a specific ingredient made using palm oil.  **Example** &gt; &#x60;&#x60;&#x60;&amp;palm_oil&#x3D;E160a Beta Carotene&#x60;&#x60;&#x60;  (optional)
+     - parameter trace: (query) ### Filter the search to only include branded foods that contain a specific trace ingredient.  **Example** &gt; &#x60;&#x60;&#x60;&amp;trace&#x3D;Tree Nuts&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter vitamin: (query) #### Filter the search to only include branded foods that contain a specific vitamin.  **Example** &gt; &#x60;&#x60;&#x60;&amp;vitamin&#x3D;Biotin&#x60;&#x60;&#x60;  (optional)
+     - parameter limit: (query) #### Set maximum number of records you want the API to return. The default value is \&quot;**10**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;limit&#x3D;10&#x60;&#x60;&#x60;  (optional)
+     - parameter page: (query) #### This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on. The default value is \&quot;**1**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;page&#x3D;1&#x60;&#x60;&#x60;  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func foodBrandedSearchPhpGet(allergen: String? = nil, brand: String? = nil, category: String? = nil, country: String? = nil, diet: String? = nil, ingredient: String? = nil, keyword: String? = nil, mineral: String? = nil, nutrient: String? = nil, palmOil: String? = nil, trace: String? = nil, vitamin: String? = nil, limit: Limit_foodBrandedSearchPhpGet? = nil, page: Int32? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
+    open class func foodBrandedSearchPhpGet(allergen: String? = nil, brand: String? = nil, category: String? = nil, country: String? = nil, diet: Diet_foodBrandedSearchPhpGet? = nil, ingredient: String? = nil, keyword: String? = nil, mineral: String? = nil, nutrient: String? = nil, palmOil: String? = nil, trace: String? = nil, vitamin: String? = nil, limit: Limit_foodBrandedSearchPhpGet? = nil, page: Int32? = nil, completion: @escaping ((_ data: BrandedFoodObject?, _ error: ErrorResponse?) -> Void)) {
         foodBrandedSearchPhpGetWithRequestBuilder(allergen: allergen, brand: brand, category: category, country: country, diet: diet, ingredient: ingredient, keyword: keyword, mineral: mineral, nutrient: nutrient, palmOil: palmOil, trace: trace, vitamin: vitamin, limit: limit, page: page).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1171,81 +571,65 @@ open class DefaultAPI: APIBase {
     /**
      Get data for branded food items using various search parameters
      - GET /food/branded/search.php
-     - # Search for branded food items using various parameters.  __Example:__ ```https://chompthis.com/api/v2/food/branded/search.php?api_key=API_KEY&brand=BRAND&country=COUNTRY&page=1```  ___Tip:__ Get started by using the [Query Builder](https://chompthis.com/api/build.php)._ 
+     - ## Search for branded food items using various parameters.  **Example** > ```https://chompthis.com/api/v2/food/branded/search.php?api_key=API_KEY&brand=BRAND&country=COUNTRY&page=1```  **Tips**    * Get started by using the **[Query Builder](https://chompthis.com/api/build.php)**.  > This API endpoint is only available to Standard and Premium API subscribers. Please consider upgrading your subscription if you are subscribed to the Limited plan. **[Read this](https://desk.zoho.com/portal/chompthis/kb/articles/can-i-upgrade-downgrade-my-subscription)** if you aren't sure how to upgrade your subscription. 
      - API Key:
        - type: apiKey api_key (QUERY)
        - name: ApiKeyAuth
      - examples: [{contentType=application/json, example={
   "items" : [ {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
+    "package" : {
+      "quantity" : 0,
+      "size" : "size"
+    },
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
-      "english_speaking" : 2,
-      "non_english_speaking" : 6
+      "english_speaking" : 7,
+      "non_english_speaking" : 1
     },
+    "traces" : [ "traces", "traces" ],
     "description" : "description",
+    "diet_flags" : [ {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    }, {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    } ],
+    "countries" : [ "countries", "countries" ],
     "has_english_ingredients" : true,
     "palm_oil_ingredients" : [ "palm_oil_ingredients", "palm_oil_ingredients" ],
     "serving" : {
-      "total" : 5,
       "size_fulltext" : "size_fulltext",
-      "size" : 1,
+      "size" : "size",
       "measurement_unit" : "measurement_unit"
     },
-    "nutrients" : {
-      "chomp" : [ {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      }, {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      } ],
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
-    "protein_conversion_factor" : 7.457744773683766,
+    "nutrients" : [ {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    }, {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    } ],
+    "allergens" : [ "allergens", "allergens" ],
     "packaging_photos" : {
       "nutrition" : {
         "small" : "small",
@@ -1263,152 +647,91 @@ open class DefaultAPI: APIBase {
         "display" : "display"
       }
     },
+    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
+    "vitamins" : [ "vitamins", "vitamins" ],
     "diet_labels" : {
       "vegetarian" : {
         "confidence_description" : "confidence_description",
         "confidence" : 9,
         "name" : "name",
-        "compatibility_level" : 5,
+        "compatibility_level" : 7,
         "is_compatible" : true
       },
       "vegan" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 4,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 1,
+        "compatibility_level" : 5,
         "is_compatible" : true
       },
       "gluten_free" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 6,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 9,
+        "compatibility_level" : 3,
         "is_compatible" : true
       }
     },
+    "name" : "name",
     "ingredients" : "ingredients",
     "categories" : [ "categories", "categories" ],
-    "common_name" : "common_name",
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
-    "package" : {
-      "quantity" : 0,
-      "size" : 6
-    },
-    "traces" : [ "traces", "traces" ],
-    "diet_flags" : [ {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    }, {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    } ],
-    "countries" : [ "countries", "countries" ],
-    "footnote" : "footnote",
-    "allergens" : [ "allergens", "allergens" ],
-    "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
-    },
-    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
-    "name" : "name",
     "brand_list" : [ "brand_list", "brand_list" ]
   }, {
     "minerals" : [ "minerals", "minerals" ],
-    "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
-      "name" : "name",
-      "is_refuse" : true
-    } ],
+    "package" : {
+      "quantity" : 0,
+      "size" : "size"
+    },
     "keywords" : [ "keywords", "keywords" ],
     "country_details" : {
-      "english_speaking" : 2,
-      "non_english_speaking" : 6
+      "english_speaking" : 7,
+      "non_english_speaking" : 1
     },
+    "traces" : [ "traces", "traces" ],
     "description" : "description",
+    "diet_flags" : [ {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    }, {
+      "ingredient" : "ingredient",
+      "is_allergen" : true,
+      "ingredient_description" : "ingredient_description",
+      "compatibility_level" : 4,
+      "is_compatible" : "is_compatible",
+      "diet_label" : "diet_label",
+      "compatibility_description" : "compatibility_description"
+    } ],
+    "countries" : [ "countries", "countries" ],
     "has_english_ingredients" : true,
     "palm_oil_ingredients" : [ "palm_oil_ingredients", "palm_oil_ingredients" ],
     "serving" : {
-      "total" : 5,
       "size_fulltext" : "size_fulltext",
-      "size" : 1,
+      "size" : "size",
       "measurement_unit" : "measurement_unit"
     },
-    "nutrients" : {
-      "chomp" : [ {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      }, {
-        "total" : 7.061401241503109,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "per_100g" : 5.637376656633329,
-        "per_serving" : 2.3021358869347655
-      } ],
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
-    "protein_conversion_factor" : 7.457744773683766,
+    "nutrients" : [ {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    }, {
+      "data_points" : 5,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 1,
+      "description" : "description",
+      "per_100g" : 6.027456183070403
+    } ],
+    "allergens" : [ "allergens", "allergens" ],
     "packaging_photos" : {
       "nutrition" : {
         "small" : "small",
@@ -1426,101 +749,56 @@ open class DefaultAPI: APIBase {
         "display" : "display"
       }
     },
+    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
+    "vitamins" : [ "vitamins", "vitamins" ],
     "diet_labels" : {
       "vegetarian" : {
         "confidence_description" : "confidence_description",
         "confidence" : 9,
         "name" : "name",
-        "compatibility_level" : 5,
+        "compatibility_level" : 7,
         "is_compatible" : true
       },
       "vegan" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 4,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 1,
+        "compatibility_level" : 5,
         "is_compatible" : true
       },
       "gluten_free" : {
         "confidence_description" : "confidence_description",
-        "confidence" : 6,
+        "confidence" : 2,
         "name" : "name",
-        "compatibility_level" : 9,
+        "compatibility_level" : 3,
         "is_compatible" : true
       }
     },
+    "name" : "name",
     "ingredients" : "ingredients",
     "categories" : [ "categories", "categories" ],
-    "common_name" : "common_name",
     "barcode" : "barcode",
     "brand" : "brand",
-    "portions" : [ {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    }, {
-      "data_points" : 1,
-      "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
-      "measurement_unit" : "measurement_unit",
-      "description" : "description",
-      "footnote" : "footnote"
-    } ],
-    "package" : {
-      "quantity" : 0,
-      "size" : 6
-    },
-    "traces" : [ "traces", "traces" ],
-    "diet_flags" : [ {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    }, {
-      "ingredient" : "ingredient",
-      "is_allergen" : true,
-      "ingredient_description" : "ingredient_description",
-      "compatibility_level" : 8,
-      "is_compatible" : "is_compatible",
-      "diet_label" : "diet_label",
-      "compatibility_description" : "compatibility_description"
-    } ],
-    "countries" : [ "countries", "countries" ],
-    "footnote" : "footnote",
-    "allergens" : [ "allergens", "allergens" ],
-    "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
-    },
-    "ingredient_list" : [ "ingredient_list", "ingredient_list" ],
-    "name" : "name",
     "brand_list" : [ "brand_list", "brand_list" ]
   } ]
 }}]
-     - parameter allergen: (query) Specify a required allergen ingredient (optional)  __Example__: Peanuts  __Resources__: [List of allergens](https://chompthis.com/api/data/allergen.php)  (optional)
-     - parameter brand: (query) Specify a required brand (optional)  __Example__: Starbucks  __Resources__: [List of brands](https://chompthis.com/api/data/brand.php)  (optional)
-     - parameter category: (query) Specify a required category (optional)  __Example__: Pasta Dishes  __Resources__: [List of categories](https://chompthis.com/api/data/category.php)  (optional)
-     - parameter country: (query) Specify a required country (optional)  __Example__: United States  __Resources__: [List of countries](https://chompthis.com/api/data/country.php)  (optional)
-     - parameter diet: (query) Specify a required diet (optional)  _Filters the search to only include food items that are considered compatible with the following diets: Vegan, Vegetarian, Gluten Free_  __Example__: Gluten Free  __Resources__: [List of diets](https://chompthis.com/api/data/lifestyle.php)  (optional)
-     - parameter ingredient: (query) Specify a required ingredient (optional)  __Example__: Salt  __Resources__: [List of ingredients](https://chompthis.com/api/data/ingredient.php)  (optional)
-     - parameter keyword: (query) Specify a required keyword (optional)  __Example__: Starbucks  __Resources__: [List of brands](https://chompthis.com/api/data/brand.php)  (optional)
-     - parameter mineral: (query) Specify a required mineral (optional)  __Example__: Potassium  __Resources__: [List of minerals](https://chompthis.com/api/data/mineral.php)  (optional)
-     - parameter nutrient: (query) Specify a required nutrition label item (optional)  __Example__: Caffeine  __Resources__: [List of nutrition label items](https://chompthis.com/api/data/nutrition.php)  (optional)
-     - parameter palmOil: (query) Specify a required palm oil ingredient (optional)  __Example__: E160a Beta Carotene  __Resources__: [List of palm oil ingredients](https://chompthis.com/api/data/palm-oil.php)  (optional)
-     - parameter trace: (query) Specify a required trace ingredient (optional)  __Example__: Tree Nuts  __Resources__: [List of trace ingredients](https://chompthis.com/api/data/trace.php)  (optional)
-     - parameter vitamin: (query) Specify a required vitamin (optional)  __Example__: Biotin  __Resources__: [List of vitamins](https://chompthis.com/api/data/vitamin.php)  (optional)
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Note:__ The maximum value is 10._  __Example:__ 3 _(defaults to 10)_  (optional)
-     - parameter page: (query) Specify the search response page number.  _Each page will contain up to 10 items._  __Example__: 1 _(default)_  (optional)
+     - parameter allergen: (query) #### Filter the search to only include branded foods that contain a specific allergen.  **Example** &gt; &#x60;&#x60;&#x60;&amp;allergen&#x3D;Peanuts&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter brand: (query) #### Filter the search to only include branded foods that are owned by a specific brand.  **Example** &gt; &#x60;&#x60;&#x60;&amp;brand&#x3D;Starbucks&#x60;&#x60;&#x60;  (optional)
+     - parameter category: (query) #### Filter the search to only include branded foods from a specific category.  **Example** &gt; &#x60;&#x60;&#x60;&amp;category&#x3D;Plant Based Foods&#x60;&#x60;&#x60;  (optional)
+     - parameter country: (query) #### Filter the search to only include branded foods that are sold in a specific country.  **Example** &gt; &#x60;&#x60;&#x60;&amp;country&#x3D;United States&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter diet: (query) #### Filter the search to only include branded foods that are considered compatible with a specific diet.  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter ingredient: (query) #### Filter the search to only include branded foods that contain a specific ingredient.  **Example** &gt; &#x60;&#x60;&#x60;&amp;ingredient&#x3D;Salt&#x60;&#x60;&#x60;  (optional)
+     - parameter keyword: (query) #### Filter the search to only include branded foods that are associated with a specific keyword.  **Example** &gt; &#x60;&#x60;&#x60;&amp;keyword&#x3D;Organic&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter mineral: (query) #### Filter the search to only include branded foods that contain a specific mineral.  **Example** &gt; &#x60;&#x60;&#x60;&amp;mineral&#x3D;Potassium&#x60;&#x60;&#x60;  (optional)
+     - parameter nutrient: (query) #### Filter the search to only include branded foods that contain a specific nutrient.  **Example** &gt; &#x60;&#x60;&#x60;&amp;nutrient&#x3D;Caffeine&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter palmOil: (query) #### Filter the search to only include branded foods that contain a specific ingredient made using palm oil.  **Example** &gt; &#x60;&#x60;&#x60;&amp;palm_oil&#x3D;E160a Beta Carotene&#x60;&#x60;&#x60;  (optional)
+     - parameter trace: (query) ### Filter the search to only include branded foods that contain a specific trace ingredient.  **Example** &gt; &#x60;&#x60;&#x60;&amp;trace&#x3D;Tree Nuts&#x60;&#x60;&#x60;  **Important Note**: This parameter cannot be used alone. It must be paired with at least 1 additional parameter.  (optional)
+     - parameter vitamin: (query) #### Filter the search to only include branded foods that contain a specific vitamin.  **Example** &gt; &#x60;&#x60;&#x60;&amp;vitamin&#x3D;Biotin&#x60;&#x60;&#x60;  (optional)
+     - parameter limit: (query) #### Set maximum number of records you want the API to return. The default value is \&quot;**10**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;limit&#x3D;10&#x60;&#x60;&#x60;  (optional)
+     - parameter page: (query) #### This is how you paginate the search result. By default, you will see the first 10 records. You must increment the page number to access the next 10 records, and so on. The default value is \&quot;**1**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;page&#x3D;1&#x60;&#x60;&#x60;  (optional)
      - returns: RequestBuilder<BrandedFoodObject> 
      */
-    open class func foodBrandedSearchPhpGetWithRequestBuilder(allergen: String? = nil, brand: String? = nil, category: String? = nil, country: String? = nil, diet: String? = nil, ingredient: String? = nil, keyword: String? = nil, mineral: String? = nil, nutrient: String? = nil, palmOil: String? = nil, trace: String? = nil, vitamin: String? = nil, limit: Limit_foodBrandedSearchPhpGet? = nil, page: Int32? = nil) -> RequestBuilder<BrandedFoodObject> {
+    open class func foodBrandedSearchPhpGetWithRequestBuilder(allergen: String? = nil, brand: String? = nil, category: String? = nil, country: String? = nil, diet: Diet_foodBrandedSearchPhpGet? = nil, ingredient: String? = nil, keyword: String? = nil, mineral: String? = nil, nutrient: String? = nil, palmOil: String? = nil, trace: String? = nil, vitamin: String? = nil, limit: Limit_foodBrandedSearchPhpGet? = nil, page: Int32? = nil) -> RequestBuilder<BrandedFoodObject> {
         let path = "/food/branded/search.php"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -1530,7 +808,7 @@ open class DefaultAPI: APIBase {
                         "brand": brand,
                         "category": category,
                         "country": country,
-                        "diet": diet,
+                        "diet": diet?.rawValue,
                         "ingredient": ingredient,
                         "keyword": keyword,
                         "mineral": mineral,
@@ -1550,7 +828,7 @@ open class DefaultAPI: APIBase {
     /**
      * enum for parameter limit
      */
-    public enum Limit_ingredientSearchPhpGet: Int32 { 
+    public enum Limit_foodIngredientSearchPhpGet: Int32 { 
         case _1 = 1
         case _2 = 2
         case _3 = 3
@@ -1558,14 +836,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Get raw/generic food ingredient item(s)
-     - parameter find: (query) Specify the ingredient name(s).  __Example #1:__ broccoli  __Example #2:__ broccoli,cauliflower,spinach  ___Important Note:__ Set the \&quot;is_list\&quot; parameter to true before passing in a comma-separated list of ingredients._  
-     - parameter list: (query) Specify if you are searching for multiple ingredients.  _Setting this to true will configure this endpoint so that it accepts a comma-separated list of ingredients._  _By default, this endpoint expects a single ingredient._  __Example:__ true _(defaults to false)_  
-     - parameter raw: (query) Specify if you only want data for raw ingredients.  __Example:__ true _(defaults to true)_  (optional)
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Important Note:__ Setting this to \&quot;1\&quot; will return 1 record per search term._  __Example:__ 1 _(defaults to 1, max is 3)_  (optional)
+     - parameter find: (query) Search our database for a single ingredient or a specific set of ingredients.  **Example #1: Single Ingredient** &gt; &#x60;&#x60;&#x60;&amp;find&#x3D;raw broccoli&#x60;&#x60;&#x60;  **Example #2: Set of Ingredients** &gt; &#x60;&#x60;&#x60;&amp;find&#x3D;raw broccoli,buttermilk waffle,mashed potatoes&#x60;&#x60;&#x60;  **Important Notes**    * Comma-separated lists cannot contain more than **10 ingredients**. You must perform additional API calls if you are looking up more than 10 ingredients.  
+     - parameter limit: (query) #### Set maximum number of records you want the API to return, per search term. The default value is \&quot;**1**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;limit&#x3D;3&#x60;&#x60;&#x60;  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func ingredientSearchPhpGet(find: Int32, list: Bool, raw: Bool? = nil, limit: Limit_ingredientSearchPhpGet? = nil, completion: @escaping ((_ data: IngredientObject?, _ error: ErrorResponse?) -> Void)) {
-        ingredientSearchPhpGetWithRequestBuilder(find: find, list: list, raw: raw, limit: limit).execute { (response, error) -> Void in
+    open class func foodIngredientSearchPhpGet(find: String, limit: Limit_foodIngredientSearchPhpGet? = nil, completion: @escaping ((_ data: IngredientObject?, _ error: ErrorResponse?) -> Void)) {
+        foodIngredientSearchPhpGetWithRequestBuilder(find: find, limit: limit).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -1573,209 +849,153 @@ open class DefaultAPI: APIBase {
 
     /**
      Get raw/generic food ingredient item(s)
-     - GET /ingredient/search.php
-     - # Get data for a specific ingredient or a specific set of ingredients.  __Example:__ ```https://chompthis.com/api/v2/ingredient/search.php?api_key=API_KEY&find=STRING/LIST&list=BOOLEAN&raw=BOOLEAN``` 
+     - GET /food/ingredient/search.php
+     - ## Get data for a specific ingredient or a specific set of ingredients.  **Example #1: Single Ingredient** > ```https://chompthis.com/api/v2/ingredient/search.php?api_key=API_KEY&find=raw broccoli```  **Example #2: Set of Ingredients** > ```https://chompthis.com/api/v2/ingredient/search.php?api_key=API_KEY&find=raw broccoli,mashed potatoes,chicken drumstick```  **Tips**   * Expose ingredient endpoints by using our **[food lookup tool](https://chompthis.com/api/lookup.php)**.  > This API endpoint is only available to Standard and Premium API subscribers. Please consider upgrading your subscription if you are subscribed to the Limited plan. **[Read this](https://desk.zoho.com/portal/chompthis/kb/articles/can-i-upgrade-downgrade-my-subscription)** if you aren't sure how to upgrade your subscription. 
      - API Key:
        - type: apiKey api_key (QUERY)
        - name: ApiKeyAuth
      - examples: [{contentType=application/json, example={
   "items" : [ {
-    "protein_conversion_factor" : 0.8008281904610115,
+    "protein_conversion_factor" : 2.027123023002322,
+    "score" : "score",
     "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
+      "carbohydrate_value" : 3.616076749251911,
+      "protein_value" : 7.061401241503109,
+      "fat_value" : 9.301444243932576
     },
     "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
+      "data_points" : 1,
+      "pct_weight" : 4.145608029883936,
+      "gram_weight" : 7.386281948385884,
       "name" : "name",
       "is_refuse" : true
     }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
+      "data_points" : 1,
+      "pct_weight" : 4.145608029883936,
+      "gram_weight" : 7.386281948385884,
       "name" : "name",
       "is_refuse" : true
     } ],
-    "diet_labels" : {
-      "vegetarian" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 9,
-        "name" : "name",
-        "compatibility_level" : 5,
-        "is_compatible" : true
-      },
-      "vegan" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 4,
-        "name" : "name",
-        "compatibility_level" : 1,
-        "is_compatible" : true
-      },
-      "gluten_free" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 6,
-        "name" : "name",
-        "compatibility_level" : 9,
-        "is_compatible" : true
-      }
-    },
     "name" : "name",
-    "description" : "description",
+    "search_term" : "search_term",
     "categories" : [ "categories", "categories" ],
     "footnote" : "footnote",
     "common_name" : "common_name",
-    "nutrients" : {
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
+    "nutrients" : [ {
+      "data_points" : 2,
+      "min" : 6.027456183070403,
+      "median" : 5.962133916683182,
+      "max" : 1.4658129805029452,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 5,
+      "description" : "description",
+      "per_100g" : 0.8008281904610115,
+      "footnote" : "footnote"
+    }, {
+      "data_points" : 2,
+      "min" : 6.027456183070403,
+      "median" : 5.962133916683182,
+      "max" : 1.4658129805029452,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 5,
+      "description" : "description",
+      "per_100g" : 0.8008281904610115,
+      "footnote" : "footnote"
+    } ],
     "portions" : [ {
       "data_points" : 1,
       "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
+      "gram_weight" : 1.0246457001441578,
       "measurement_unit" : "measurement_unit",
       "description" : "description",
       "footnote" : "footnote"
     }, {
       "data_points" : 1,
       "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
+      "gram_weight" : 1.0246457001441578,
       "measurement_unit" : "measurement_unit",
       "description" : "description",
       "footnote" : "footnote"
     } ]
   }, {
-    "protein_conversion_factor" : 0.8008281904610115,
+    "protein_conversion_factor" : 2.027123023002322,
+    "score" : "score",
     "calorie_conversion_factor" : {
-      "carbohydrate_value" : 6.84685269835264,
-      "protein_value" : 1.0246457001441578,
-      "fat_value" : 1.4894159098541704
+      "carbohydrate_value" : 3.616076749251911,
+      "protein_value" : 7.061401241503109,
+      "fat_value" : 9.301444243932576
     },
     "components" : [ {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
+      "data_points" : 1,
+      "pct_weight" : 4.145608029883936,
+      "gram_weight" : 7.386281948385884,
       "name" : "name",
       "is_refuse" : true
     }, {
-      "data_points" : 3,
-      "pct_weight" : 9.018348186070783,
-      "gram_weight" : 6.438423552598547,
+      "data_points" : 1,
+      "pct_weight" : 4.145608029883936,
+      "gram_weight" : 7.386281948385884,
       "name" : "name",
       "is_refuse" : true
     } ],
-    "diet_labels" : {
-      "vegetarian" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 9,
-        "name" : "name",
-        "compatibility_level" : 5,
-        "is_compatible" : true
-      },
-      "vegan" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 4,
-        "name" : "name",
-        "compatibility_level" : 1,
-        "is_compatible" : true
-      },
-      "gluten_free" : {
-        "confidence_description" : "confidence_description",
-        "confidence" : 6,
-        "name" : "name",
-        "compatibility_level" : 9,
-        "is_compatible" : true
-      }
-    },
     "name" : "name",
-    "description" : "description",
+    "search_term" : "search_term",
     "categories" : [ "categories", "categories" ],
     "footnote" : "footnote",
     "common_name" : "common_name",
-    "nutrients" : {
-      "usda" : [ {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      }, {
-        "data_points" : 1,
-        "min" : 2.027123023002322,
-        "median" : 7.386281948385884,
-        "max" : 4.145608029883936,
-        "name" : "name",
-        "measurement_unit" : "measurement_unit",
-        "description" : "description",
-        "id" : 9,
-        "per_100g" : 3.616076749251911,
-        "footnote" : "footnote",
-        "source" : "source"
-      } ]
-    },
+    "nutrients" : [ {
+      "data_points" : 2,
+      "min" : 6.027456183070403,
+      "median" : 5.962133916683182,
+      "max" : 1.4658129805029452,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 5,
+      "description" : "description",
+      "per_100g" : 0.8008281904610115,
+      "footnote" : "footnote"
+    }, {
+      "data_points" : 2,
+      "min" : 6.027456183070403,
+      "median" : 5.962133916683182,
+      "max" : 1.4658129805029452,
+      "name" : "name",
+      "measurement_unit" : "measurement_unit",
+      "rank" : 5,
+      "description" : "description",
+      "per_100g" : 0.8008281904610115,
+      "footnote" : "footnote"
+    } ],
     "portions" : [ {
       "data_points" : 1,
       "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
+      "gram_weight" : 1.0246457001441578,
       "measurement_unit" : "measurement_unit",
       "description" : "description",
       "footnote" : "footnote"
     }, {
       "data_points" : 1,
       "modifier" : "modifier",
-      "gram_weight" : 6.965117697638846,
+      "gram_weight" : 1.0246457001441578,
       "measurement_unit" : "measurement_unit",
       "description" : "description",
       "footnote" : "footnote"
     } ]
   } ]
 }}]
-     - parameter find: (query) Specify the ingredient name(s).  __Example #1:__ broccoli  __Example #2:__ broccoli,cauliflower,spinach  ___Important Note:__ Set the \&quot;is_list\&quot; parameter to true before passing in a comma-separated list of ingredients._  
-     - parameter list: (query) Specify if you are searching for multiple ingredients.  _Setting this to true will configure this endpoint so that it accepts a comma-separated list of ingredients._  _By default, this endpoint expects a single ingredient._  __Example:__ true _(defaults to false)_  
-     - parameter raw: (query) Specify if you only want data for raw ingredients.  __Example:__ true _(defaults to true)_  (optional)
-     - parameter limit: (query) Set maximum number of records you want the API to return.  ___Important Note:__ Setting this to \&quot;1\&quot; will return 1 record per search term._  __Example:__ 1 _(defaults to 1, max is 3)_  (optional)
+     - parameter find: (query) Search our database for a single ingredient or a specific set of ingredients.  **Example #1: Single Ingredient** &gt; &#x60;&#x60;&#x60;&amp;find&#x3D;raw broccoli&#x60;&#x60;&#x60;  **Example #2: Set of Ingredients** &gt; &#x60;&#x60;&#x60;&amp;find&#x3D;raw broccoli,buttermilk waffle,mashed potatoes&#x60;&#x60;&#x60;  **Important Notes**    * Comma-separated lists cannot contain more than **10 ingredients**. You must perform additional API calls if you are looking up more than 10 ingredients.  
+     - parameter limit: (query) #### Set maximum number of records you want the API to return, per search term. The default value is \&quot;**1**.\&quot;  **Example** &gt; &#x60;&#x60;&#x60;&amp;limit&#x3D;3&#x60;&#x60;&#x60;  (optional)
      - returns: RequestBuilder<IngredientObject> 
      */
-    open class func ingredientSearchPhpGetWithRequestBuilder(find: Int32, list: Bool, raw: Bool? = nil, limit: Limit_ingredientSearchPhpGet? = nil) -> RequestBuilder<IngredientObject> {
-        let path = "/ingredient/search.php"
+    open class func foodIngredientSearchPhpGetWithRequestBuilder(find: String, limit: Limit_foodIngredientSearchPhpGet? = nil) -> RequestBuilder<IngredientObject> {
+        let path = "/food/ingredient/search.php"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
-                        "find": find.encodeToJSON(),
-                        "list": list,
-                        "raw": raw,
+                        "find": find,
                         "limit": limit?.rawValue
         ])
 
